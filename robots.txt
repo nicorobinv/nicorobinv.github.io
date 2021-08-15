@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://nicorobinv.github.io/sitemap.xml
+Host: https://nicorobinv.github.io
