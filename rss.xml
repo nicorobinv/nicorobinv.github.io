@@ -1,12 +1,107 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev.seungwon Jang | Feed]]></title><description><![CDATA[seungwon Jang's Development Blog]]></description><link>https://nicorobinv.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 17 Aug 2021 04:20:43 GMT</lastBuildDate><item><title><![CDATA[branch 정리 노트]]></title><description><![CDATA[git branch 새 브랜치 이름 : 새로운 브랜치를 생성
-git checkout -b 새 브랜치 이름 : 새로운 브랜치를 생성하고 그 브랜치로 바로 이동
-git branch -d 기존 브랜치 이름 : 브랜치 삭제
-git checkout 기존 브랜…]]></description><link>https://nicorobinv.github.io/Git-study_4/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_4/</guid><pubDate>Tue, 17 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git branch [새 브랜치 이름] : 새로운 브랜치를 생성
-git checkout -b [새 브랜치 이름] : 새로운 브랜치를 생성하고 그 브랜치로 바로 이동
-git branch -d [기존 브랜치 이름] : 브랜치 삭제
-git checkout [기존 브랜치 이름] : 그 브랜치로 이동
-git merge [기존 브랜치 이름] : 현재 브랜치에 다른 브랜치를 머지
-git merge --abort : 머지를 하다가 conflict가 발생했을 때, 일단은 머지 작업을 취소하고 이전 상태로 돌아감&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git 협업하기 정리 노트]]></title><description><![CDATA[git fetch : 로컬 레포지토리에서 현재 HEAD가 가리키는 브랜치의 업스트림(upstream) 브랜치로부터 최신 커밋들을 가져옴(가져오기만 한다는 점에서, 가져와서 머지까지 하는 git pull과는 차이가 있음)
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev.seungwon Jang | Feed]]></title><description><![CDATA[seungwon Jang's Development Blog]]></description><link>https://nicorobinv.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 20 Aug 2021 02:18:04 GMT</lastBuildDate><item><title><![CDATA[React JSX 문법]]></title><description><![CDATA[JSX란?
+JSX는 자바스크립트의 확장 문법인데요. 리액트로 코드를 작성할 때 HTML 문법과 비슷한 이 JSX 문법을 활용하면 훨씬 더 편리하게 화면에 나타낼 코드를 작성할 수가 있게 됩니다. import ReactDOM from 'react-do…]]></description><link>https://nicorobinv.github.io/React-study_1/</link><guid isPermaLink="false">https://nicorobinv.github.io/React-study_1/</guid><pubDate>Fri, 20 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;JSX란?
+JSX는 자바스크립트의 확장 문법인데요. 리액트로 코드를 작성할 때 HTML 문법과 비슷한 이 JSX 문법을 활용하면 훨씬 더 편리하게 화면에 나타낼 코드를 작성할 수가 있게 됩니다.&lt;/p&gt;
+&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
+&lt;p&gt;ReactDOM.render(&lt;h1&gt;안녕 리액트!&lt;/h1&gt;, document.getElementById(&apos;root&apos;));
+JSX 문법
+JSX는 자바스크립트로 HTML과 같은 문법을 사용할 수 있도록 만들어주는 편리한 문법이지만, 그만큼 꼭 지켜야 할 규칙들도 있습니다.&lt;/p&gt;
+&lt;p&gt;HTML과 다른 속성명&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;속성명은 카멜 케이스로 작성하기!
+JSX 문법에서도 태그에 속성을 지정해 줄 수 있습니다. 단, 여러 단어가 조합된 몇몇 속성들을 사용할 때는 반드시 카멜 케이스(Camel Case)로 작성해야 합니다.
+사실 여러 단어가 조합된 HTML 속성들이 많진 않지만, 예를 들면 onclick, onblur, onfocus 등과 같은 이벤트 속성이나, tabindex 같은 속성들이 있습니다.
+이런 속성들은 모두 onClick, onBlur, onFocus, onMouseDown, onMouseOver, tabIndex 처럼 작성하는 것이죠!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
+&lt;p&gt;ReactDOM.render(
+&lt;button onClick= ... &gt;클릭!&lt;/button&gt;,
+document.getElementById(&apos;root&apos;)
+);
+단, 예외적으로 HTML에서 비표준 속성을 다룰 때 활용하는 data-* 속성은 카멜 케이스(Camel Case)가 아니라 기존의 HTML 문법 그대로 작성하셔야 합니다.&lt;/p&gt;
+&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
+&lt;p&gt;ReactDOM.render(&lt;/p&gt;
+  &lt;div&gt;
+    상태 변경: 
+    &lt;button className=&quot;btn&quot; data-status=&quot;대기중&quot;&gt;대기중&lt;/button&gt;
+    &lt;button className=&quot;btn&quot; data-status=&quot;진행중&quot;&gt;진행중&lt;/button&gt;
+    &lt;button className=&quot;btn&quot; data-status=&quot;완료&quot;&gt;완료&lt;/button&gt;
+  &lt;/div&gt;,
+  document.getElementById(&apos;root&apos;)
+);
+2. 자바스크립트 예약어와 같은 속성명은 사용할 수 없다!
+JSX 문법도 결국은 자바스크립트 문법이기 때문에, for나 class처럼 자바스크립트의 문법에 해당하는 예약어와 똑같은 이름의 속성명은 사용할 수 없습니다.
+그래서 HTML의 for의 경우에는 자바스크립트의 반복문 키워드 for와 겹치기 때문에 htmlFor로, HTML의 class 속성도 자바스크립트의 클래스 키워드 class와 겹치기 때문에 className으로 작성해 주어야 합니다.
+&lt;p&gt;React 공식 문서 - 어트리뷰트의 차이&lt;/p&gt;
+&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
+&lt;p&gt;ReactDOM.render(&lt;/p&gt;
+  &lt;form&gt;
+    &lt;label htmlFor=&quot;name&quot;&gt;이름&lt;/label&gt;
+    &lt;input id=&quot;name&quot; className=&quot;name-input&quot; type=&quot;text&quot; /&gt;
+  &lt;/form&gt;,
+  document.getElementById(&apos;root&apos;)
+);
+반드시 하나의 요소로 감싸기 - Fragment
+JSX 문법을 활용할 때는 반드시 하나의 요소로 감싸주어야 합니다. 그래서 아래 코드처럼 여러 개의 요소를 작성하면 오류가 발생하는데요.
+&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
+&lt;p&gt;ReactDOM.render(&lt;/p&gt;
+  &lt;p&gt;안녕&lt;/p&gt;
+  &lt;p&gt;리액트!&lt;/p&gt;,
+  document.getElementById(&apos;root&apos;)
+);
+이럴 때는 아래 코드처럼 여러 태그를 감싸는 부모 태그를 만들어 하나의 요소로 만들어 주어야 합니다.
+&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
+&lt;p&gt;ReactDOM.render(&lt;/p&gt;
+  &lt;div&gt;
+    &lt;p&gt;안녕&lt;/p&gt;
+    &lt;p&gt;리액트!&lt;/p&gt;
+  &lt;/div&gt;,
+  document.getElementById(&apos;root&apos;)
+);
+하지만 이렇게 작성한다면 때로는 꼭 필요하지 않은 부모 태그가 작성될 수 있겠죠? 그럴 땐 Fragment로 감싸주면 의미 없는 부모 태그를 만들지 않아도 여러 요소를 작성할 수 있습니다.
+&lt;p&gt;import { Fragment } from &apos;react&apos;;
+import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
+&lt;p&gt;ReactDOM.render(
+&lt;Fragment&gt;&lt;/p&gt;
+&lt;p&gt;안녕&lt;/p&gt;
+&lt;p&gt;리액트!&lt;/p&gt;
+&lt;/Fragment&gt;,
+document.getElementById(&apos;root&apos;)
+);
+참고로 Fragment는 아래 코드처럼 빈 태그로 감싸는 단축 문법으로 활용할 수도 있습니다.
+&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
+&lt;p&gt;ReactDOM.render(
+&amp;#x3C;&gt;&lt;/p&gt;
+&lt;p&gt;안녕&lt;/p&gt;
+&lt;p&gt;리액트!&lt;/p&gt;
+&lt;/&gt;,
+document.getElementById(&apos;root&apos;)
+);
+자바스크립트 표현식 넣기
+JSX 문법에서 중괄호({})를 활용하면 자바스크립트 표현식을 넣을 수 있습니다.
+&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
+&lt;p&gt;const product = &apos;맥북&apos;;&lt;/p&gt;
+&lt;p&gt;ReactDOM.render(&lt;/p&gt;
+  &lt;h1&gt;나만의 {product} 주문하기&lt;/h1&gt;,
+  document.getElementById(&apos;root&apos;)
+);
+이런 부분들을 잘 활용하면, 아래 코드처럼 중괄호 안에서 문자열을 조합할 수도 있고 변수에 이미지 주소를 할당해서 img 태그의 src 속성값을 전달해 줄 수도 있고, 이벤트 핸들러를 좀 더 편리하게 등록할 수도 있습니다.
+&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
+&lt;p&gt;const product = &apos;MacBook&apos;;
+const model = &apos;Air&apos;;
+const imageUrl = &apos;&lt;a href=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/MacBook_with_Retina_Display.png/500px-MacBook_with_Retina_Display.png&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/MacBook_with_Retina_Display.png/500px-MacBook_with_Retina_Display.png&lt;/a&gt;&apos;&lt;/p&gt;
+&lt;p&gt;function handleClick(e) {
+alert(&apos;곧 도착합니다!&apos;);
+}&lt;/p&gt;
+&lt;p&gt;ReactDOM.render(
+&amp;#x3C;&gt;&lt;/p&gt;
+&lt;h1&gt;{product + &apos; &apos; + model} 주문하기&lt;/h1&gt;
+&lt;img src={imageUrl} alt=&quot;제품 사진&quot; /&gt;
+&lt;button onClick={handleClick}&gt;확인&lt;/button&gt;
+&lt;/&gt;,
+document.getElementById(&apos;root&apos;)
+);
+단, JSX 문법에서 중괄호는 자바스크립트 표현식을 다룰 때 활용하기 때문에, 중괄호 안에서 for, if문 등의 문장은 다룰 수 없다는 점은 꼭 기억해 주세요.
+그런데도 만약 JSX 문법을 활용할 때 조건문이 꼭 필요하다면 조건 연산자를, 반복문이 꼭 필요하다면 배열의 반복 메소드를 활용하자.</content:encoded></item><item><title><![CDATA[Git 협업하기 정리 노트]]></title><description><![CDATA[git fetch : 로컬 레포지토리에서 현재 HEAD가 가리키는 브랜치의 업스트림(upstream) 브랜치로부터 최신 커밋들을 가져옴(가져오기만 한다는 점에서, 가져와서 머지까지 하는 git pull과는 차이가 있음)
 git blame : 특정 파…]]></description><link>https://nicorobinv.github.io/Git-study_5/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_5/</guid><pubDate>Tue, 17 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git fetch : 로컬 레포지토리에서 현재 HEAD가 가리키는 브랜치의 업스트림(upstream) 브랜치로부터 최신 커밋들을 가져옴(가져오기만 한다는 점에서, 가져와서 머지까지 하는 git pull과는 차이가 있음)
 git blame : 특정 파일의 내용 한줄한줄이 어떤 커밋에 의해 생긴 것인지 출력
 git revert : 특정 커밋에서 이루어진 작업을 되돌리는(취소하는) 커밋을 새로 생성&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git 내용 총정리 노트]]></title><description><![CDATA[Git 써보기
@@ -64,7 +159,29 @@ git stash pop [커밋 아이디] : 스택 영역에 저장된 가장 최근의(�
 git cherry-pick [커밋 아이디] : 특정 커밋의 내용을 현재 커밋에 반영
 ! 그 밖에 알아야할 사실&lt;/p&gt;
 &lt;p&gt;(1) git commit이라고만 쓰고 실행하면 커밋 메시지를 입력할 수 있는 텍스트 에디터 창이 뜹니다. 거기서 커밋 메시지를 입력하고 저장하고 나면 커밋이 이루어집니다.&lt;/p&gt;
-&lt;p&gt;(2) git push와 git pull은 그 작업 단위가 브랜치입니다. 예를 들어, master 브랜치에서 git push를 하면 master 브랜치의 내용만 리모트 레포지토리의 master 브랜치로 전송되지, premium 브랜치의 내용이 전송되는 것은 아닙니다.(git push에 --all이라는 옵션을 주면 모든 브랜치의 내용을 전송할 수 있기는 합니다.)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Blog test]]></title><description><![CDATA[오늘의 느낀점..github에서 저장소 생성할시에 readme 파일 생성하는건 잘생각하고 하자...]]></description><link>https://nicorobinv.github.io/first-post/</link><guid isPermaLink="false">https://nicorobinv.github.io/first-post/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;오늘의 느낀점..github에서 저장소 생성할시에 readme 파일 생성하는건 잘생각하고 하자...&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git 써보기 정리 노트]]></title><description><![CDATA[git init : 현재 디렉토리를 Git이 관리하는 프로젝트 디렉토리(=working directory)로 설정하고 그 안에 레포지토리(.git 디렉토리) 생성
+&lt;p&gt;(2) git push와 git pull은 그 작업 단위가 브랜치입니다. 예를 들어, master 브랜치에서 git push를 하면 master 브랜치의 내용만 리모트 레포지토리의 master 브랜치로 전송되지, premium 브랜치의 내용이 전송되는 것은 아닙니다.(git push에 --all이라는 옵션을 주면 모든 브랜치의 내용을 전송할 수 있기는 합니다.)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[branch 정리 노트]]></title><description><![CDATA[git branch 새 브랜치 이름 : 새로운 브랜치를 생성
+git checkout -b 새 브랜치 이름 : 새로운 브랜치를 생성하고 그 브랜치로 바로 이동
+git branch -d 기존 브랜치 이름 : 브랜치 삭제
+git checkout 기존 브랜…]]></description><link>https://nicorobinv.github.io/Git-study_4/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_4/</guid><pubDate>Tue, 17 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git branch [새 브랜치 이름] : 새로운 브랜치를 생성
+git checkout -b [새 브랜치 이름] : 새로운 브랜치를 생성하고 그 브랜치로 바로 이동
+git branch -d [기존 브랜치 이름] : 브랜치 삭제
+git checkout [기존 브랜치 이름] : 그 브랜치로 이동
+git merge [기존 브랜치 이름] : 현재 브랜치에 다른 브랜치를 머지
+git merge --abort : 머지를 하다가 conflict가 발생했을 때, 일단은 머지 작업을 취소하고 이전 상태로 돌아감&lt;/p&gt;</content:encoded></item><item><title><![CDATA[commit 정리 노트]]></title><description><![CDATA[git log : 커밋 히스토리를 출력
+git log --pretty=oneline : --pretty 옵션을 사용하면 커밋 히스토리를 다양한 방식으로 출력할 수 있습니다. --pretty 옵션에 oneline이라는 값을 주면 커밋 하나당 한 줄씩 …]]></description><link>https://nicorobinv.github.io/Git-study_3/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_3/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git log : 커밋 히스토리를 출력
+git log --pretty=oneline : --pretty 옵션을 사용하면 커밋 히스토리를 다양한 방식으로 출력할 수 있습니다. --pretty 옵션에 oneline이라는 값을 주면 커밋 하나당 한 줄씩 출력해줍니다. --pretty 옵션에 대해 더 자세히 알고싶으면 이 링크를 참고하세요.
+git show [커밋 아이디] : 특정 커밋에서 어떤 변경사항이 있었는지 확인
+git commit --amend : 최신 커밋을 다시 수정해서 새로운 커밋으로 만듦
+git config alias.[별명] [커맨드] : 길이가 긴 커맨드에 별명을 붙여서 이후로 별명으로 해당 커맨드를 실행할 수 있도록 설정
+git diff [커밋 A의 아이디] [커밋 B의 아이디] : 두 커밋 간의 차이 비교
+git reset [옵션] [커밋 아이디] : 옵션에 따라 하는 작업이 달라짐(옵션을 생략하면 --mixed 옵션이 적용됨)
+(1) HEAD가 특정 커밋을 가리키도록 이동시킴(--soft는 여기까지 수행)&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;	(2) staging area도 특정 커밋처럼 리셋(--mixed는 여기까지 수행)
+
+	(3) working directory도 특정 커밋처럼 리셋(--hard는 여기까지 수행)
+
+	그리고 이때 커밋 아이디 대신 HEAD의 위치를 기준으로 한 표기법(예 : HEAD^, HEAD~3)을 사용해도 됨&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;git tag [태그 이름] [커밋 아이디] : 특정 커밋에 태그를 붙임&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Blog test]]></title><description><![CDATA[오늘의 느낀점..github에서 저장소 생성할시에 readme 파일 생성하는건 잘생각하고 하자...]]></description><link>https://nicorobinv.github.io/first-post/</link><guid isPermaLink="false">https://nicorobinv.github.io/first-post/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;오늘의 느낀점..github에서 저장소 생성할시에 readme 파일 생성하는건 잘생각하고 하자...&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git 써보기 정리 노트]]></title><description><![CDATA[git init : 현재 디렉토리를 Git이 관리하는 프로젝트 디렉토리(=working directory)로 설정하고 그 안에 레포지토리(.git 디렉토리) 생성
 git config user.name 'codeit' : 현재 사용자의 아이디를 'co…]]></description><link>https://nicorobinv.github.io/Git-study_1/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_1/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git init : 현재 디렉토리를 Git이 관리하는 프로젝트 디렉토리(=working directory)로 설정하고 그 안에 레포지토리(.git 디렉토리) 생성
 git config user.name &apos;codeit&apos; : 현재 사용자의 아이디를 &apos;codeit&apos;으로 설정(커밋할 때 필요한 정보)
 git config user.email &apos;teacher@codeit.kr&apos; : 현재 사용자의 이메일 주소를 &apos;teacher@codeit.kr&apos;로 설정(커밋할 때 필요한 정보)
@@ -79,21 +196,17 @@ git push : 로컬 레포지토리의 내용을 리모트 레포지토리에 보�
 git pull : 리모트 레포지토리의 내용을 로컬 …]]></description><link>https://nicorobinv.github.io/Git-study_2/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_2/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git push -u origin master : 로컬 레포지토리의 내용을 처음으로 리모트 레포지토리에 올릴 때 사용합니다.
 git push : 로컬 레포지토리의 내용을 리모트 레포지토리에 보내기
 git pull : 리모트 레포지토리의 내용을 로컬 레포지토리로 가져오기
-git clone [프로젝트의 GitHub 상 주소] : GitHub에 있는 프로젝트를 내 컴퓨터로 가져오기&lt;/p&gt;</content:encoded></item><item><title><![CDATA[commit 정리 노트]]></title><description><![CDATA[git log : 커밋 히스토리를 출력
-git log --pretty=oneline : --pretty 옵션을 사용하면 커밋 히스토리를 다양한 방식으로 출력할 수 있습니다. --pretty 옵션에 oneline이라는 값을 주면 커밋 하나당 한 줄씩 …]]></description><link>https://nicorobinv.github.io/Git-study_3/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_3/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git log : 커밋 히스토리를 출력
-git log --pretty=oneline : --pretty 옵션을 사용하면 커밋 히스토리를 다양한 방식으로 출력할 수 있습니다. --pretty 옵션에 oneline이라는 값을 주면 커밋 하나당 한 줄씩 출력해줍니다. --pretty 옵션에 대해 더 자세히 알고싶으면 이 링크를 참고하세요.
-git show [커밋 아이디] : 특정 커밋에서 어떤 변경사항이 있었는지 확인
-git commit --amend : 최신 커밋을 다시 수정해서 새로운 커밋으로 만듦
-git config alias.[별명] [커맨드] : 길이가 긴 커맨드에 별명을 붙여서 이후로 별명으로 해당 커맨드를 실행할 수 있도록 설정
-git diff [커밋 A의 아이디] [커밋 B의 아이디] : 두 커밋 간의 차이 비교
-git reset [옵션] [커밋 아이디] : 옵션에 따라 하는 작업이 달라짐(옵션을 생략하면 --mixed 옵션이 적용됨)
-(1) HEAD가 특정 커밋을 가리키도록 이동시킴(--soft는 여기까지 수행)&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;	(2) staging area도 특정 커밋처럼 리셋(--mixed는 여기까지 수행)
-
-	(3) working directory도 특정 커밋처럼 리셋(--hard는 여기까지 수행)
-
-	그리고 이때 커밋 아이디 대신 HEAD의 위치를 기준으로 한 표기법(예 : HEAD^, HEAD~3)을 사용해도 됨&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;git tag [태그 이름] [커밋 아이디] : 특정 커밋에 태그를 붙임&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Image, 이미지 게시물 예제]]></title><description><![CDATA[이미지 파일이 첨부된 게시물의 예제입니다. 폴더를 만들고 폴더의 제목이 해당 게시물의 주소가 됩니다. 게시물 파일명은 index.md 로 합니다. 이미지 파일은 폴더 내에 위치시킵니다. 자세한 가이드는 Documents를 확인해주세요.]]></description><link>https://nicorobinv.github.io/image-post-example.md/</link><guid isPermaLink="false">https://nicorobinv.github.io/image-post-example.md/</guid><pubDate>Sun, 24 Mar 1991 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
+git clone [프로젝트의 GitHub 상 주소] : GitHub에 있는 프로젝트를 내 컴퓨터로 가져오기&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Tag, 태그 게시물 예제]]></title><description><![CDATA[게시물에 태그를 지정할 수 있습니다. 해당 게시물의 Markdown YAML Front matter은 아래와 같습니다. 가이드의 Markdown YAML Front matter를 참고하세요. 자세한 가이드는 Documents를 확인해주세요.]]></description><link>https://nicorobinv.github.io/tag-post-example/</link><guid isPermaLink="false">https://nicorobinv.github.io/tag-post-example/</guid><pubDate>Sun, 24 Mar 1991 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;게시물에 태그를 지정할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;해당 게시물의 Markdown YAML Front matter은 아래와 같습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;---
+title: Tag, 태그 게시물 예제
+date: 2019-07-30
+tags:
+  - tag
+  - 태그
+---&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;가이드의 Markdown YAML Front matter를 참고하세요.&lt;/p&gt;
+&lt;p&gt;자세한 가이드는 &lt;a href=&quot;https://github.com/junhobaik/junhobaik.github.io/wiki/Document-(Borderless)&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Documents&lt;/a&gt;를 확인해주세요.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Image, 이미지 게시물 예제]]></title><description><![CDATA[이미지 파일이 첨부된 게시물의 예제입니다. 폴더를 만들고 폴더의 제목이 해당 게시물의 주소가 됩니다. 게시물 파일명은 index.md 로 합니다. 이미지 파일은 폴더 내에 위치시킵니다. 자세한 가이드는 Documents를 확인해주세요.]]></description><link>https://nicorobinv.github.io/image-post-example.md/</link><guid isPermaLink="false">https://nicorobinv.github.io/image-post-example.md/</guid><pubDate>Sun, 24 Mar 1991 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
@@ -129,14 +242,4 @@ git reset [옵션] [커밋 아이디] : 옵션에 따라 하는 작업이 달라
 &lt;p&gt;폴더를 만들고 폴더의 제목이 해당 게시물의 주소가 됩니다.&lt;/p&gt;
 &lt;p&gt;게시물 파일명은 index.md 로 합니다.&lt;/p&gt;
 &lt;p&gt;이미지 파일은 폴더 내에 위치시킵니다.&lt;/p&gt;
-&lt;p&gt;자세한 가이드는 &lt;a href=&quot;https://github.com/junhobaik/junhobaik.github.io/wiki/Document-(Borderless)&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Documents&lt;/a&gt;를 확인해주세요.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Tag, 태그 게시물 예제]]></title><description><![CDATA[게시물에 태그를 지정할 수 있습니다. 해당 게시물의 Markdown YAML Front matter은 아래와 같습니다. 가이드의 Markdown YAML Front matter를 참고하세요. 자세한 가이드는 Documents를 확인해주세요.]]></description><link>https://nicorobinv.github.io/tag-post-example/</link><guid isPermaLink="false">https://nicorobinv.github.io/tag-post-example/</guid><pubDate>Sun, 24 Mar 1991 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;게시물에 태그를 지정할 수 있습니다.&lt;/p&gt;
-&lt;p&gt;해당 게시물의 Markdown YAML Front matter은 아래와 같습니다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;---
-title: Tag, 태그 게시물 예제
-date: 2019-07-30
-tags:
-  - tag
-  - 태그
----&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;가이드의 Markdown YAML Front matter를 참고하세요.&lt;/p&gt;
 &lt;p&gt;자세한 가이드는 &lt;a href=&quot;https://github.com/junhobaik/junhobaik.github.io/wiki/Document-(Borderless)&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Documents&lt;/a&gt;를 확인해주세요.&lt;/p&gt;</content:encoded></item></channel></rss>
