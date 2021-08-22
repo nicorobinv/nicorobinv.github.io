@@ -1,4 +1,94 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev.seungwon Jang | Feed]]></title><description><![CDATA[seungwon Jang's Development Blog]]></description><link>https://nicorobinv.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 20 Aug 2021 16:24:31 GMT</lastBuildDate><item><title><![CDATA[React commponent 문법]]></title><description><![CDATA[리액트 엘리먼트
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev.seungwon Jang | Feed]]></title><description><![CDATA[seungwon Jang's Development Blog]]></description><link>https://nicorobinv.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 22 Aug 2021 02:51:50 GMT</lastBuildDate><item><title><![CDATA[React commponent 문법]]></title><description><![CDATA[JSX 문법에서 컴포넌트를 작성할 때 컴포넌트에도 속성을 지정할 수 있는데요. 리액트에서 이렇게 컴포넌트에 지정한 속성들을 Props라고 부릅니다. Props는 Properties의 약자인데요. 컴포넌트에 속성을 지정해주면 각 속성이 하나의 객체로 …]]></description><link>https://nicorobinv.github.io/React-stydy_3/</link><guid isPermaLink="false">https://nicorobinv.github.io/React-stydy_3/</guid><pubDate>Sun, 22 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;JSX 문법에서 컴포넌트를 작성할 때 컴포넌트에도 속성을 지정할 수 있는데요. 리액트에서 이렇게 컴포넌트에 지정한 속성들을 Props라고 부릅니다.&lt;/p&gt;
+&lt;p&gt;Props는 Properties의 약자인데요. 컴포넌트에 속성을 지정해주면 각 속성이 하나의 객체로 모여서 컴포넌트를 정의한 함수의 첫 번째 파라미터로 전달됩니다.&lt;/p&gt;
+&lt;p&gt;App.js&lt;/p&gt;
+&lt;p&gt;import Dice from &apos;./Dice&apos;;&lt;/p&gt;
+&lt;p&gt;function App() {
+return (&lt;/p&gt;
+&lt;div&gt;
+&lt;Dice color=&quot;blue&quot; /&gt;
+&lt;/div&gt;
+);
+}
+&lt;p&gt;export default App;
+Dice.js&lt;/p&gt;
+&lt;p&gt;import diceBlue01 from &apos;./assets/dice-blue-1.svg&apos;;&lt;/p&gt;
+&lt;p&gt;function Dice(props) {
+console.log(props)
+return &lt;img src={diceBlue01} alt=&quot;주사위&quot; /&gt;;
+}&lt;/p&gt;
+&lt;p&gt;export default Dice;
+위 코드들 처럼 App 함수에서 사용하는 Dice 컴포넌트에 color라는 속성을 blue로 지정해주고, Dice 함수 내부에서 props라는 파라미터를 하나 만들어 출력해보면 브라우저 콘솔에는 다음과 같은 출력 결과가 나타나게 됩니다.&lt;/p&gt;
+&lt;p&gt;{ color: &quot;blue&quot; }
+그래서 컴포넌트를 활용할 때 속성값을 다양하게 전달하고 이 props 값을 활용하면, 똑같은 컴포넌트라도 전달된 속성값에 따라 서로 다른 모습을 그려낼 수도 있게 됩니다.&lt;/p&gt;
+&lt;p&gt;App.js&lt;/p&gt;
+&lt;p&gt;import Dice from &apos;./Dice&apos;;&lt;/p&gt;
+&lt;p&gt;function App() {
+return (&lt;/p&gt;
+&lt;div&gt;
+&lt;Dice color=&quot;red&quot; num={2} /&gt;
+&lt;/div&gt;
+);
+}
+&lt;p&gt;export default App;
+Dice.js&lt;/p&gt;
+&lt;p&gt;import diceBlue01 from &apos;./assets/dice-blue-1.svg&apos;;
+import diceBlue02 from &apos;./assets/dice-blue-2.svg&apos;;
+// ...
+import diceRed01 from &apos;./assets/dice-red-1.svg&apos;;
+import diceRed02 from &apos;./assets/dice-red-2.svg&apos;;
+// ...&lt;/p&gt;
+&lt;p&gt;const DICE_IMAGES = {
+blue: [diceBlue01, diceBlue02],
+red: [diceRed01, diceRed02],
+};&lt;/p&gt;
+&lt;p&gt;function Dice(props) {
+const src = DICE_IMAGES[props.color][props.num - 1];
+const alt = &lt;code class=&quot;language-text&quot;&gt;${props.color} ${props.num}&lt;/code&gt;;
+return &lt;img src={src} alt={alt} /&gt;;
+}&lt;/p&gt;
+&lt;p&gt;export default Dice;
+참고로, 이렇게 props가 객체 형태를 띠고 있으니 Destructuring 문법을 활용해서 조금 더 간결하게 코드를 작성할 수도 있겠죠?&lt;/p&gt;
+&lt;p&gt;import diceBlue01 from &apos;./assets/dice-blue-1.svg&apos;;
+import diceBlue02 from &apos;./assets/dice-blue-2.svg&apos;;
+// ...
+import diceRed01 from &apos;./assets/dice-red-1.svg&apos;;
+import diceRed02 from &apos;./assets/dice-red-2.svg&apos;;
+// ...&lt;/p&gt;
+&lt;p&gt;const DICE_IMAGES = {
+blue: [diceBlue01, diceBlue02],
+red: [diceRed01, diceRed02],
+};&lt;/p&gt;
+&lt;p&gt;function Dice({ color = &apos;blue&apos;, num = 1 }) {
+const src = DICE_IMAGES[color][num - 1];
+const alt = &lt;code class=&quot;language-text&quot;&gt;${color} ${num}&lt;/code&gt;;
+return &lt;img src={src} alt={alt} /&gt;;
+}&lt;/p&gt;
+&lt;p&gt;export default Dice;
+Children
+props에는 children이라는 조금 특별한 프로퍼티(prop, 프롭)가 있습니다.&lt;/p&gt;
+&lt;p&gt;JSX 문법으로 컴포넌트를 작성할 때 컴포넌트를 단일 태그가 아니라 여는 태그와 닫는 태그의 형태로 작성하면, 그 안에 작성된 코드가 바로 이 children 값에 담기게 됩니다.&lt;/p&gt;
+&lt;p&gt;Button.js&lt;/p&gt;
+&lt;p&gt;function Button({ children }) {
+return &lt;button&gt;{children}&lt;/button&gt;;
+}&lt;/p&gt;
+&lt;p&gt;export default Button;
+App.js&lt;/p&gt;
+&lt;p&gt;import Button from &apos;./Button&apos;;
+import Dice from &apos;./Dice&apos;;&lt;/p&gt;
+&lt;p&gt;function App() {
+return (&lt;/p&gt;
+&lt;div&gt;
+&lt;div&gt;
+&lt;Button&gt;던지기&lt;/Button&gt;
+&lt;Button&gt;처음부터&lt;/Button&gt;
+&lt;/div&gt;
+&lt;Dice color=&quot;red&quot; num={2} /&gt;
+&lt;/div&gt;
+);
+}
+&lt;p&gt;export default App;
+그래서 JSX 문법으로 컴포넌트를 작성할 때 어떤 정보를 전달할 때는 일반적인 props의 속성값을 주로 활용하고, 화면에 보여질 모습을 조금 더 직관적인 코드로 작성하고자 할 때 children 값을 활용할 수가 있습니다.&lt;/p&gt;
+&lt;p&gt;참고로 이 children을 활용하면 단순히 텍스트만 작성하는 걸 넘어서 컴포넌트 안에 컴포넌트를 작성할 수도 있고, 컴포넌트 안에 복잡한 태그들을 더 작성할 수도 있다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[React commponent 문법]]></title><description><![CDATA[리액트 엘리먼트
 JSX 문법으로 작성한 요소는 결과적으로 자바스크립트 객체가 됩니다. import ReactDOM from 'react-dom'; const element = 안녕 리액트!;
 console.log(element);
 ReactDOM.r…]]></description><link>https://nicorobinv.github.io/React-study_2/</link><guid isPermaLink="false">https://nicorobinv.github.io/React-study_2/</guid><pubDate>Sat, 21 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;리액트 엘리먼트
@@ -152,7 +242,10 @@ alert(&apos;곧 도착합니다!&apos;);
 document.getElementById(&apos;root&apos;)
 );
 단, JSX 문법에서 중괄호는 자바스크립트 표현식을 다룰 때 활용하기 때문에, 중괄호 안에서 for, if문 등의 문장은 다룰 수 없다는 점은 꼭 기억해 주세요.
-그런데도 만약 JSX 문법을 활용할 때 조건문이 꼭 필요하다면 조건 연산자를, 반복문이 꼭 필요하다면 배열의 반복 메소드를 활용하자.</content:encoded></item><item><title><![CDATA[branch 정리 노트]]></title><description><![CDATA[git branch 새 브랜치 이름 : 새로운 브랜치를 생성
+그런데도 만약 JSX 문법을 활용할 때 조건문이 꼭 필요하다면 조건 연산자를, 반복문이 꼭 필요하다면 배열의 반복 메소드를 활용하자.</content:encoded></item><item><title><![CDATA[Git 협업하기 정리 노트]]></title><description><![CDATA[git fetch : 로컬 레포지토리에서 현재 HEAD가 가리키는 브랜치의 업스트림(upstream) 브랜치로부터 최신 커밋들을 가져옴(가져오기만 한다는 점에서, 가져와서 머지까지 하는 git pull과는 차이가 있음)
+git blame : 특정 파…]]></description><link>https://nicorobinv.github.io/Git-study_5/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_5/</guid><pubDate>Tue, 17 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git fetch : 로컬 레포지토리에서 현재 HEAD가 가리키는 브랜치의 업스트림(upstream) 브랜치로부터 최신 커밋들을 가져옴(가져오기만 한다는 점에서, 가져와서 머지까지 하는 git pull과는 차이가 있음)
+git blame : 특정 파일의 내용 한줄한줄이 어떤 커밋에 의해 생긴 것인지 출력
+git revert : 특정 커밋에서 이루어진 작업을 되돌리는(취소하는) 커밋을 새로 생성&lt;/p&gt;</content:encoded></item><item><title><![CDATA[branch 정리 노트]]></title><description><![CDATA[git branch 새 브랜치 이름 : 새로운 브랜치를 생성
 git checkout -b 새 브랜치 이름 : 새로운 브랜치를 생성하고 그 브랜치로 바로 이동
 git branch -d 기존 브랜치 이름 : 브랜치 삭제
 git checkout 기존 브랜…]]></description><link>https://nicorobinv.github.io/Git-study_4/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_4/</guid><pubDate>Tue, 17 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git branch [새 브랜치 이름] : 새로운 브랜치를 생성
@@ -160,10 +253,7 @@ git checkout -b [새 브랜치 이름] : 새로운 브랜치를 생성하고 그
 git branch -d [기존 브랜치 이름] : 브랜치 삭제
 git checkout [기존 브랜치 이름] : 그 브랜치로 이동
 git merge [기존 브랜치 이름] : 현재 브랜치에 다른 브랜치를 머지
-git merge --abort : 머지를 하다가 conflict가 발생했을 때, 일단은 머지 작업을 취소하고 이전 상태로 돌아감&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git 협업하기 정리 노트]]></title><description><![CDATA[git fetch : 로컬 레포지토리에서 현재 HEAD가 가리키는 브랜치의 업스트림(upstream) 브랜치로부터 최신 커밋들을 가져옴(가져오기만 한다는 점에서, 가져와서 머지까지 하는 git pull과는 차이가 있음)
-git blame : 특정 파…]]></description><link>https://nicorobinv.github.io/Git-study_5/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_5/</guid><pubDate>Tue, 17 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git fetch : 로컬 레포지토리에서 현재 HEAD가 가리키는 브랜치의 업스트림(upstream) 브랜치로부터 최신 커밋들을 가져옴(가져오기만 한다는 점에서, 가져와서 머지까지 하는 git pull과는 차이가 있음)
-git blame : 특정 파일의 내용 한줄한줄이 어떤 커밋에 의해 생긴 것인지 출력
-git revert : 특정 커밋에서 이루어진 작업을 되돌리는(취소하는) 커밋을 새로 생성&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git 내용 총정리 노트]]></title><description><![CDATA[Git 써보기
+git merge --abort : 머지를 하다가 conflict가 발생했을 때, 일단은 머지 작업을 취소하고 이전 상태로 돌아감&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git 내용 총정리 노트]]></title><description><![CDATA[Git 써보기
 git init : 현재 디렉토리를 Git이 관리하는 프로젝트 디렉토리(=working directory)로 설정하고 그 안에 레포지토리(.git 디렉토리) 생성
 git config user.name 'codeit' : 현재 사용자의 …]]></description><link>https://nicorobinv.github.io/Git-study_6/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_6/</guid><pubDate>Tue, 17 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Git 써보기
 git init : 현재 디렉토리를 Git이 관리하는 프로젝트 디렉토리(=working directory)로 설정하고 그 안에 레포지토리(.git 디렉토리) 생성
@@ -218,12 +308,12 @@ git stash pop [커밋 아이디] : 스택 영역에 저장된 가장 최근의(�
 git cherry-pick [커밋 아이디] : 특정 커밋의 내용을 현재 커밋에 반영
 ! 그 밖에 알아야할 사실&lt;/p&gt;
 &lt;p&gt;(1) git commit이라고만 쓰고 실행하면 커밋 메시지를 입력할 수 있는 텍스트 에디터 창이 뜹니다. 거기서 커밋 메시지를 입력하고 저장하고 나면 커밋이 이루어집니다.&lt;/p&gt;
-&lt;p&gt;(2) git push와 git pull은 그 작업 단위가 브랜치입니다. 예를 들어, master 브랜치에서 git push를 하면 master 브랜치의 내용만 리모트 레포지토리의 master 브랜치로 전송되지, premium 브랜치의 내용이 전송되는 것은 아닙니다.(git push에 --all이라는 옵션을 주면 모든 브랜치의 내용을 전송할 수 있기는 합니다.)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Blog test]]></title><description><![CDATA[오늘의 느낀점..github에서 저장소 생성할시에 readme 파일 생성하는건 잘생각하고 하자...]]></description><link>https://nicorobinv.github.io/first-post/</link><guid isPermaLink="false">https://nicorobinv.github.io/first-post/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;오늘의 느낀점..github에서 저장소 생성할시에 readme 파일 생성하는건 잘생각하고 하자...&lt;/p&gt;</content:encoded></item><item><title><![CDATA[GitHub 시작하기 정리 노트]]></title><description><![CDATA[git push -u origin master : 로컬 레포지토리의 내용을 처음으로 리모트 레포지토리에 올릴 때 사용합니다.
+&lt;p&gt;(2) git push와 git pull은 그 작업 단위가 브랜치입니다. 예를 들어, master 브랜치에서 git push를 하면 master 브랜치의 내용만 리모트 레포지토리의 master 브랜치로 전송되지, premium 브랜치의 내용이 전송되는 것은 아닙니다.(git push에 --all이라는 옵션을 주면 모든 브랜치의 내용을 전송할 수 있기는 합니다.)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[GitHub 시작하기 정리 노트]]></title><description><![CDATA[git push -u origin master : 로컬 레포지토리의 내용을 처음으로 리모트 레포지토리에 올릴 때 사용합니다.
 git push : 로컬 레포지토리의 내용을 리모트 레포지토리에 보내기
 git pull : 리모트 레포지토리의 내용을 로컬 …]]></description><link>https://nicorobinv.github.io/Git-study_2/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_2/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git push -u origin master : 로컬 레포지토리의 내용을 처음으로 리모트 레포지토리에 올릴 때 사용합니다.
 git push : 로컬 레포지토리의 내용을 리모트 레포지토리에 보내기
 git pull : 리모트 레포지토리의 내용을 로컬 레포지토리로 가져오기
-git clone [프로젝트의 GitHub 상 주소] : GitHub에 있는 프로젝트를 내 컴퓨터로 가져오기&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git 써보기 정리 노트]]></title><description><![CDATA[git init : 현재 디렉토리를 Git이 관리하는 프로젝트 디렉토리(=working directory)로 설정하고 그 안에 레포지토리(.git 디렉토리) 생성
+git clone [프로젝트의 GitHub 상 주소] : GitHub에 있는 프로젝트를 내 컴퓨터로 가져오기&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Blog test]]></title><description><![CDATA[오늘의 느낀점..github에서 저장소 생성할시에 readme 파일 생성하는건 잘생각하고 하자...]]></description><link>https://nicorobinv.github.io/first-post/</link><guid isPermaLink="false">https://nicorobinv.github.io/first-post/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;오늘의 느낀점..github에서 저장소 생성할시에 readme 파일 생성하는건 잘생각하고 하자...&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git 써보기 정리 노트]]></title><description><![CDATA[git init : 현재 디렉토리를 Git이 관리하는 프로젝트 디렉토리(=working directory)로 설정하고 그 안에 레포지토리(.git 디렉토리) 생성
 git config user.name 'codeit' : 현재 사용자의 아이디를 'co…]]></description><link>https://nicorobinv.github.io/Git-study_1/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_1/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git init : 현재 디렉토리를 Git이 관리하는 프로젝트 디렉토리(=working directory)로 설정하고 그 안에 레포지토리(.git 디렉토리) 생성
 git config user.name &apos;codeit&apos; : 현재 사용자의 아이디를 &apos;codeit&apos;으로 설정(커밋할 때 필요한 정보)
 git config user.email &apos;teacher@codeit.kr&apos; : 현재 사용자의 이메일 주소를 &apos;teacher@codeit.kr&apos;로 설정(커밋할 때 필요한 정보)
@@ -247,14 +337,4 @@ git reset [옵션] [커밋 아이디] : 옵션에 따라 하는 작업이 달라
 	(3) working directory도 특정 커밋처럼 리셋(--hard는 여기까지 수행)
 
 	그리고 이때 커밋 아이디 대신 HEAD의 위치를 기준으로 한 표기법(예 : HEAD^, HEAD~3)을 사용해도 됨&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;git tag [태그 이름] [커밋 아이디] : 특정 커밋에 태그를 붙임&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Tag, 태그 게시물 예제]]></title><description><![CDATA[게시물에 태그를 지정할 수 있습니다. 해당 게시물의 Markdown YAML Front matter은 아래와 같습니다. 가이드의 Markdown YAML Front matter를 참고하세요. 자세한 가이드는 Documents를 확인해주세요.]]></description><link>https://nicorobinv.github.io/tag-post-example/</link><guid isPermaLink="false">https://nicorobinv.github.io/tag-post-example/</guid><pubDate>Sun, 24 Mar 1991 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;게시물에 태그를 지정할 수 있습니다.&lt;/p&gt;
-&lt;p&gt;해당 게시물의 Markdown YAML Front matter은 아래와 같습니다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;---
-title: Tag, 태그 게시물 예제
-date: 2019-07-30
-tags:
-  - tag
-  - 태그
----&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;가이드의 Markdown YAML Front matter를 참고하세요.&lt;/p&gt;
-&lt;p&gt;자세한 가이드는 &lt;a href=&quot;https://github.com/junhobaik/junhobaik.github.io/wiki/Document-(Borderless)&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Documents&lt;/a&gt;를 확인해주세요.&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;git tag [태그 이름] [커밋 아이디] : 특정 커밋에 태그를 붙임&lt;/p&gt;</content:encoded></item></channel></rss>
