@@ -1,4 +1,63 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev.seungwon Jang | Feed]]></title><description><![CDATA[seungwon Jang's Development Blog]]></description><link>https://nicorobinv.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 22 Aug 2021 15:03:52 GMT</lastBuildDate><item><title><![CDATA[React Props 문법]]></title><description><![CDATA[JSX 문법에서 컴포넌트를 작성할 때 컴포넌트에도 속성을 지정할 수 있는데요. 리액트에서 이렇게 컴포넌트에 지정한 속성들을 Props라고 부릅니다. Props는 Properties의 약자인데요. 컴포넌트에 속성을 지정해주면 각 속성이 하나의 객체로 …]]></description><link>https://nicorobinv.github.io/React-stydy_3/</link><guid isPermaLink="false">https://nicorobinv.github.io/React-stydy_3/</guid><pubDate>Sun, 22 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;JSX 문법에서 컴포넌트를 작성할 때 컴포넌트에도 속성을 지정할 수 있는데요. 리액트에서 이렇게 컴포넌트에 지정한 속성들을 Props라고 부릅니다.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev.seungwon Jang | Feed]]></title><description><![CDATA[seungwon Jang's Development Blog]]></description><link>https://nicorobinv.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 23 Aug 2021 04:55:39 GMT</lastBuildDate><item><title><![CDATA[React state 정리하기]]></title><description><![CDATA[State
+state는 리액트에서 화면을 그려내는 데 굉장히 중요한 역할을 합니다. State라는 단어는 한국어로 '상태'라는 뜻이 있는데요. 리액트에서의 state도 그 의미가 다르지 않습니다. 상태가 바뀔 때마다 화면을 새롭게 그려내는 방식으로 …]]></description><link>https://nicorobinv.github.io/React-study_4/</link><guid isPermaLink="false">https://nicorobinv.github.io/React-study_4/</guid><pubDate>Mon, 23 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;State
+state는 리액트에서 화면을 그려내는 데 굉장히 중요한 역할을 합니다.&lt;/p&gt;
+&lt;p&gt;State라는 단어는 한국어로 &apos;상태&apos;라는 뜻이 있는데요. 리액트에서의 state도 그 의미가 다르지 않습니다.&lt;/p&gt;
+&lt;p&gt;상태가 바뀔 때마다 화면을 새롭게 그려내는 방식으로 동작을 하는 것이죠.&lt;/p&gt;
+&lt;p&gt;리액트에서 state를 만들고, state를 바꾸기 위해서는 일단 useState라는 함수를 활용해야 합니다.&lt;/p&gt;
+&lt;p&gt;import { useState } from &apos;react&apos;;&lt;/p&gt;
+&lt;p&gt;// ...&lt;/p&gt;
+&lt;p&gt;const [num, setNum] = useState(1);&lt;/p&gt;
+&lt;p&gt;// ...
+보통 이렇게 Destructuring 문법으로 작성하는데요. useState 함수가 초깃값을 아규먼트로 받고 그에 따른 실행 결과로 요소 2개를 가진 배열의 형태로 리턴을 하기 때문입니다.&lt;/p&gt;
+&lt;p&gt;이때 첫 번째 요소가 바로 state이고, 두 번째 요소가 이 state를 바꾸는 setter 함수인데요.&lt;/p&gt;
+&lt;p&gt;참고로 위 코드에서도 볼 수 있듯 첫 번째 변수는 원하는 state의 이름(num)을 지어주고, 두 번째 변수에는 state 이름 앞에 set을 붙인 다음 카멜 케이스로 이름을 지어주는 것(setNum)이 일반적입니다.&lt;/p&gt;
+&lt;p&gt;state는 변수에 새로운 값을 할당하는 방식으로 변경하는 것이 아니라 이 setter 함수를 활용해야 하는데요. setter 함수는 호출할 때 전달하는 아규먼트 값으로 state 값을 변경해 줍니다.&lt;/p&gt;
+&lt;p&gt;그래서 아래 코드처럼 setter 함수를 활용해서 이벤트 핸들러를 등록해두면, 이벤트가 발생할 때마다 상태가 변하면서 화면이 새로 그려지는 것이죠!&lt;/p&gt;
+&lt;p&gt;import { useState } from &apos;react&apos;;
+import Button from &apos;./Button&apos;;
+import Dice from &apos;./Dice&apos;;&lt;/p&gt;
+&lt;p&gt;function App() {
+const [num, setNum] = useState(1);&lt;/p&gt;
+&lt;p&gt;const handleRollClick = () =&gt; {
+setNum(3); // num state를 3으로 변경!
+};&lt;/p&gt;
+&lt;p&gt;const handleClearClick = () =&gt; {
+setNum(1); // num state를 1로 변경!
+};&lt;/p&gt;
+&lt;p&gt;return (&lt;/p&gt;
+&lt;div&gt;
+&lt;Button onClick={handleRollClick}&gt;던지기&lt;/Button&gt;
+&lt;Button onClick={handleClearClick}&gt;처음부터&lt;/Button&gt;
+&lt;Dice color=&quot;red&quot; num={num} /&gt;
+&lt;/div&gt;
+);
+}
+&lt;p&gt;export default App;
+참조형 State
+자바스크립트의 자료형은 크게 기본형(Primitive type)과 참조형(Reference type)로 나눌 수 있다는 사실, 모두 알고 계시죠?&lt;/p&gt;
+&lt;p&gt;특히 참조형 값들은 조금 독특한 특성을 가지고 있어서 변수로 다룰 때도 조금 주의해야 할 부분들이 있었는데요. state를 활용할 때도 마찬가지입니다!&lt;/p&gt;
+&lt;p&gt;// ...&lt;/p&gt;
+&lt;p&gt;const [gameHistory, setGameHistory] = useState([]);&lt;/p&gt;
+&lt;p&gt;const handleRollClick = () =&gt; {
+const nextNum = random(6);
+gameHistory.push(nextNum);
+setGameHistory(gameHistory); // state가 제대로 변경되지 않는다!
+};&lt;/p&gt;
+&lt;p&gt;// ...
+위 코드에서 볼 수 있듯 배열 값을 가진 gameHistory에 push 메소드를 이용해서 배열의 값을 변경한 다음, 변경된 배열을 setter 함수로 state를 변경하려고 하면 코드가 제대로 동작하지 않습니다.&lt;/p&gt;
+&lt;p&gt;gameHistory state는 배열 값 자체를 가지고 있는 게 아니라 그 배열의 주솟값을 참조하고 있는 건데요. 때문에 push 메소드로 배열 안에 요소를 변경했다고 하더라도 결과적으로 참조하는 배열의 주솟값은 변경된 것이 아니게 됩니다.&lt;/p&gt;
+&lt;p&gt;결과적으로 리액트 입장에서는 gameHistory state가 참조하는 주솟값은 여전히 똑같기 때문에 상태(state)가 바뀌었다고 판단하지 않는 것이죠!&lt;/p&gt;
+&lt;p&gt;그래서 참조형 state를 활용할 때는 반드시 새로운 참조형 값을 만들어 state를 변경해야 합니다.&lt;/p&gt;
+&lt;p&gt;가장 간단한 방법은 Spread 문법(...) 을 활용하는 것이겠죠?&lt;/p&gt;
+&lt;p&gt;// ...&lt;/p&gt;
+&lt;p&gt;const [gameHistory, setGameHistory] = useState([]);&lt;/p&gt;
+&lt;p&gt;const handleRollClick = () =&gt; {
+const nextNum = random(6);
+setGameHistory([...gameHistory, nextNum]); // state가 제대로 변경된다!
+};&lt;/p&gt;
+&lt;p&gt;// ...
+이 참조형 state의 특성을 이해하지 못하면, 간혹 state가 제대로 변경되지 않는 버그가 발생했을 때 원인을 제대로 찾지 못하는 경우가 발생할 수도 있는데요.&lt;/p&gt;
+&lt;p&gt;참조형 state를 활용할 땐 반드시 새로운 참조형 값을 만들어서 state를 변경해야 한다는 점.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[React Props 문법]]></title><description><![CDATA[JSX 문법에서 컴포넌트를 작성할 때 컴포넌트에도 속성을 지정할 수 있는데요. 리액트에서 이렇게 컴포넌트에 지정한 속성들을 Props라고 부릅니다. Props는 Properties의 약자인데요. 컴포넌트에 속성을 지정해주면 각 속성이 하나의 객체로 …]]></description><link>https://nicorobinv.github.io/React-study_3/</link><guid isPermaLink="false">https://nicorobinv.github.io/React-study_3/</guid><pubDate>Sun, 22 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;JSX 문법에서 컴포넌트를 작성할 때 컴포넌트에도 속성을 지정할 수 있는데요. 리액트에서 이렇게 컴포넌트에 지정한 속성들을 Props라고 부릅니다.&lt;/p&gt;
 &lt;p&gt;Props는 Properties의 약자인데요. 컴포넌트에 속성을 지정해주면 각 속성이 하나의 객체로 모여서 컴포넌트를 정의한 함수의 첫 번째 파라미터로 전달됩니다.&lt;/p&gt;
 &lt;p&gt;App.js&lt;/p&gt;
 &lt;p&gt;import Dice from &apos;./Dice&apos;;&lt;/p&gt;
@@ -308,7 +367,12 @@ git checkout -b [새 브랜치 이름] : 새로운 브랜치를 생성하고 그
 git branch -d [기존 브랜치 이름] : 브랜치 삭제
 git checkout [기존 브랜치 이름] : 그 브랜치로 이동
 git merge [기존 브랜치 이름] : 현재 브랜치에 다른 브랜치를 머지
-git merge --abort : 머지를 하다가 conflict가 발생했을 때, 일단은 머지 작업을 취소하고 이전 상태로 돌아감&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Blog test]]></title><description><![CDATA[오늘의 느낀점..github에서 저장소 생성할시에 readme 파일 생성하는건 잘생각하고 하자...]]></description><link>https://nicorobinv.github.io/first-post/</link><guid isPermaLink="false">https://nicorobinv.github.io/first-post/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;오늘의 느낀점..github에서 저장소 생성할시에 readme 파일 생성하는건 잘생각하고 하자...&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git 써보기 정리 노트]]></title><description><![CDATA[git init : 현재 디렉토리를 Git이 관리하는 프로젝트 디렉토리(=working directory)로 설정하고 그 안에 레포지토리(.git 디렉토리) 생성
+git merge --abort : 머지를 하다가 conflict가 발생했을 때, 일단은 머지 작업을 취소하고 이전 상태로 돌아감&lt;/p&gt;</content:encoded></item><item><title><![CDATA[GitHub 시작하기 정리 노트]]></title><description><![CDATA[git push -u origin master : 로컬 레포지토리의 내용을 처음으로 리모트 레포지토리에 올릴 때 사용합니다.
+git push : 로컬 레포지토리의 내용을 리모트 레포지토리에 보내기
+git pull : 리모트 레포지토리의 내용을 로컬 …]]></description><link>https://nicorobinv.github.io/Git-study_2/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_2/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git push -u origin master : 로컬 레포지토리의 내용을 처음으로 리모트 레포지토리에 올릴 때 사용합니다.
+git push : 로컬 레포지토리의 내용을 리모트 레포지토리에 보내기
+git pull : 리모트 레포지토리의 내용을 로컬 레포지토리로 가져오기
+git clone [프로젝트의 GitHub 상 주소] : GitHub에 있는 프로젝트를 내 컴퓨터로 가져오기&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Blog test]]></title><description><![CDATA[오늘의 느낀점..github에서 저장소 생성할시에 readme 파일 생성하는건 잘생각하고 하자...]]></description><link>https://nicorobinv.github.io/first-post/</link><guid isPermaLink="false">https://nicorobinv.github.io/first-post/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;오늘의 느낀점..github에서 저장소 생성할시에 readme 파일 생성하는건 잘생각하고 하자...&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git 써보기 정리 노트]]></title><description><![CDATA[git init : 현재 디렉토리를 Git이 관리하는 프로젝트 디렉토리(=working directory)로 설정하고 그 안에 레포지토리(.git 디렉토리) 생성
 git config user.name 'codeit' : 현재 사용자의 아이디를 'co…]]></description><link>https://nicorobinv.github.io/Git-study_1/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_1/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git init : 현재 디렉토리를 Git이 관리하는 프로젝트 디렉토리(=working directory)로 설정하고 그 안에 레포지토리(.git 디렉토리) 생성
 git config user.name &apos;codeit&apos; : 현재 사용자의 아이디를 &apos;codeit&apos;으로 설정(커밋할 때 필요한 정보)
 git config user.email &apos;teacher@codeit.kr&apos; : 현재 사용자의 이메일 주소를 &apos;teacher@codeit.kr&apos;로 설정(커밋할 때 필요한 정보)
@@ -318,23 +382,4 @@ git add . : working directory 내의 수정사항이 있는 모든 파일들을 
 git reset [파일 이름] : staging area에 올렸던 파일 다시 내리기
 git status : Git이 현재 인식하고 있는 프로젝트 관련 내용들 출력(문제 상황이 발생했을 때 현재 상태를 파악하기 위해 활용하면 좋음)
 git commit -m &quot;커밋 메시지&quot; : 현재 staging area에 있는 것들 커밋으로 남기기
-git help [커맨드 이름] : 사용법이 궁금한 Git 커맨드의 공식 메뉴얼 내용 출력&lt;/p&gt;</content:encoded></item><item><title><![CDATA[commit 정리 노트]]></title><description><![CDATA[git log : 커밋 히스토리를 출력
-git log --pretty=oneline : --pretty 옵션을 사용하면 커밋 히스토리를 다양한 방식으로 출력할 수 있습니다. --pretty 옵션에 oneline이라는 값을 주면 커밋 하나당 한 줄씩 …]]></description><link>https://nicorobinv.github.io/Git-study_3/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_3/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git log : 커밋 히스토리를 출력
-git log --pretty=oneline : --pretty 옵션을 사용하면 커밋 히스토리를 다양한 방식으로 출력할 수 있습니다. --pretty 옵션에 oneline이라는 값을 주면 커밋 하나당 한 줄씩 출력해줍니다. --pretty 옵션에 대해 더 자세히 알고싶으면 이 링크를 참고하세요.
-git show [커밋 아이디] : 특정 커밋에서 어떤 변경사항이 있었는지 확인
-git commit --amend : 최신 커밋을 다시 수정해서 새로운 커밋으로 만듦
-git config alias.[별명] [커맨드] : 길이가 긴 커맨드에 별명을 붙여서 이후로 별명으로 해당 커맨드를 실행할 수 있도록 설정
-git diff [커밋 A의 아이디] [커밋 B의 아이디] : 두 커밋 간의 차이 비교
-git reset [옵션] [커밋 아이디] : 옵션에 따라 하는 작업이 달라짐(옵션을 생략하면 --mixed 옵션이 적용됨)
-(1) HEAD가 특정 커밋을 가리키도록 이동시킴(--soft는 여기까지 수행)&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;	(2) staging area도 특정 커밋처럼 리셋(--mixed는 여기까지 수행)
-
-	(3) working directory도 특정 커밋처럼 리셋(--hard는 여기까지 수행)
-
-	그리고 이때 커밋 아이디 대신 HEAD의 위치를 기준으로 한 표기법(예 : HEAD^, HEAD~3)을 사용해도 됨&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;git tag [태그 이름] [커밋 아이디] : 특정 커밋에 태그를 붙임&lt;/p&gt;</content:encoded></item><item><title><![CDATA[GitHub 시작하기 정리 노트]]></title><description><![CDATA[git push -u origin master : 로컬 레포지토리의 내용을 처음으로 리모트 레포지토리에 올릴 때 사용합니다.
-git push : 로컬 레포지토리의 내용을 리모트 레포지토리에 보내기
-git pull : 리모트 레포지토리의 내용을 로컬 …]]></description><link>https://nicorobinv.github.io/Git-study_2/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_2/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git push -u origin master : 로컬 레포지토리의 내용을 처음으로 리모트 레포지토리에 올릴 때 사용합니다.
-git push : 로컬 레포지토리의 내용을 리모트 레포지토리에 보내기
-git pull : 리모트 레포지토리의 내용을 로컬 레포지토리로 가져오기
-git clone [프로젝트의 GitHub 상 주소] : GitHub에 있는 프로젝트를 내 컴퓨터로 가져오기&lt;/p&gt;</content:encoded></item></channel></rss>
+git help [커맨드 이름] : 사용법이 궁금한 Git 커맨드의 공식 메뉴얼 내용 출력&lt;/p&gt;</content:encoded></item></channel></rss>
