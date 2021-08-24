@@ -1,4 +1,83 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev.seungwon Jang | Feed]]></title><description><![CDATA[seungwon Jang's Development Blog]]></description><link>https://nicorobinv.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 23 Aug 2021 04:55:39 GMT</lastBuildDate><item><title><![CDATA[React state 정리하기]]></title><description><![CDATA[State
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev.seungwon Jang | Feed]]></title><description><![CDATA[seungwon Jang's Development Blog]]></description><link>https://nicorobinv.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 24 Aug 2021 05:14:34 GMT</lastBuildDate><item><title><![CDATA[React 디자인 적용하는 방법과 팁]]></title><description><![CDATA[사실 CSS 파일을 불러오거나 이미지 파일을 불러오는 기능은 리액트 고유의 기능이 아니라 Create React App이라는 프로그램이 대신 설정해 준 기능입니다. (참고: Create React App 문서) 클래스네임을 좀 더 편리하게 쓰는 방법…]]></description><link>https://nicorobinv.github.io/React-study_5/</link><guid isPermaLink="false">https://nicorobinv.github.io/React-study_5/</guid><pubDate>Tue, 24 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;사실 CSS 파일을 불러오거나 이미지 파일을 불러오는 기능은 리액트 고유의 기능이 아니라 Create React App이라는 프로그램이 대신 설정해 준 기능입니다. (참고: Create React App 문서)&lt;/p&gt;
+&lt;p&gt;클래스네임을 좀 더 편리하게 쓰는 방법&lt;/p&gt;
+&lt;p&gt;디자인을 적용하는 방법
+이미지 불러오기
+이미지 파일은 import 구문을 통해 불러오고, 불러온 이미지 주소를 src 속성으로 사용하면 됩니다.&lt;/p&gt;
+&lt;p&gt;import diceImg from &apos;./assets/dice.png&apos;;&lt;/p&gt;
+&lt;p&gt;function Dice() {
+return &lt;img src={diceImg} alt=&quot;주사위 이미지&quot; /&gt;;
+}&lt;/p&gt;
+&lt;p&gt;export default App;
+인라인 스타일
+리액트에서 인라인 스타일은 문자열이 아닌 객체형으로 사용합니다. 프로퍼티 이름은 CSS 속성 이름으로, 프로퍼티 값은 CSS 속성 값으로 쓰는데요, 이때 프로퍼티 이름은 아래의 boarderRadius 처럼 대시 기호 없이 카멜 케이스로 써야 한다는 점도 꼭 기억해두세요.&lt;/p&gt;
+&lt;p&gt;import diceImg from &apos;./assets/dice.png&apos;;&lt;/p&gt;
+&lt;p&gt;const style = {
+borderRadius: &apos;50%&apos;,
+width: &apos;120px&apos;,
+height: &apos;120px&apos;,
+};&lt;/p&gt;
+&lt;p&gt;function Dice() {
+return &lt;img style={style} src={diceImg} alt=&quot;주사위 이미지&quot; /&gt;;
+}&lt;/p&gt;
+&lt;p&gt;export default App;
+CSS 파일 불러오기
+import 구문으로 파일을 불러올 수 있는데요, 이때 from 키워드 없이 쓰면 됩니다.&lt;/p&gt;
+&lt;p&gt;import diceImg from &apos;./assets/dice.png&apos;;
+import &apos;./Dice.css&apos;;&lt;/p&gt;
+&lt;p&gt;function Dice() {
+return &lt;img src={diceImg} alt=&quot;주사위 이미지&quot; /&gt;;
+}&lt;/p&gt;
+&lt;p&gt;export default App;
+클래스네임 사용하기
+CSS 파일에 정의된 클래스명을 className prop에 문자열로 넣어주면 됩니다. 이때 재사용성을 위해 className prop을 부모 컴포넌트에서 받으면 더 좋습니다.&lt;/p&gt;
+&lt;p&gt;import diceImg from &apos;./assets/dice.png&apos;;
+import &apos;./Dice.css&apos;;&lt;/p&gt;
+&lt;p&gt;function Dice({ className = &apos;&apos; }) {
+const classNames = &lt;code class=&quot;language-text&quot;&gt;Dice ${className}&lt;/code&gt;;
+return &lt;img className={classNames} src={diceImg} alt=&quot;주사위 이미지&quot; /&gt;;
+}&lt;/p&gt;
+&lt;p&gt;export default App;
+편리하게 클래스네임을 쓰는 방법
+앞에서는 여러 className을 템플릿 문자열로 합쳐서 사용했습니다. 몇 개 없을 때는 상관없지만, 개수가 늘어날수록 아래처럼 알아보기 힘들어진다는 문제점이 있는데요.&lt;/p&gt;
+&lt;p&gt;템플릿 문자열을 사용한 예
+function Button({ isPending, color, size, invert, children }) {
+const classNames = &lt;code class=&quot;language-text&quot;&gt;Button ${isPending ? &amp;#39;pending&amp;#39; : &amp;#39;&amp;#39;} ${color} ${size} ${invert ? &amp;#39;invert&amp;#39; : &amp;#39;&amp;#39;}&lt;/code&gt;;
+return &lt;button className={classNames}&gt;{children}&lt;/button&gt;;
+}&lt;/p&gt;
+&lt;p&gt;export default Button;
+배열을 사용한 예
+function Button({ isPending, color, size, invert, children }) {
+const classNames = [
+&apos;Button&apos;,
+isPending ? &apos;pending&apos; : &apos;&apos;,
+color,
+size,
+invert ? &apos;invert&apos; : &apos;&apos;,
+].join(&apos;&apos;);
+return &lt;button className={classNames}&gt;{children}&lt;/button&gt;;
+}&lt;/p&gt;
+&lt;p&gt;export default Button;
+위 예시 코드처럼 지저분하게 느껴지고, 매번 반복되는 코드를 작성한다는 번거로움이 있습니다. 개발자들은 이럴 때 라이브러리라는 걸 쓰는데요, 다른 개발자가 미리 만들어 놓은 코드를 이용해서 편하게 개발하는 겁니다.&lt;/p&gt;
+&lt;p&gt;클래스네임의 경우에도 편리하게 사용할 수 있는 라이브러리가 많이 있는데요, 그중에서도 이번에 소개할 라이브러리는 바로 classnames라는 라이브러리입니다. 아래 예시 코드를 보시면 아시겠지만, 클래스네임에만 집중할 수 있어 훨씬 읽기 편해집니다. 이렇게 적절한 라이브러리를 쓰면 개발 생산성이 굉장히 좋아지죠.&lt;/p&gt;
+&lt;p&gt;classnames 라이브러리를 사용한 예
+import classNames from &apos;classnames&apos;;&lt;/p&gt;
+&lt;p&gt;function Button({ isPending, color, size, invert, children }) {
+return (
+&amp;#x3C;button
+className={classNames(
+&apos;Button&apos;,
+isPending &amp;#x26;&amp;#x26; &apos;pending&apos;,
+color,
+size,
+invert &amp;#x26;&amp;#x26; &apos;invert&apos;,
+)}&gt;
+{ children }
+&lt;/button &gt;
+);
+}&lt;/p&gt;
+&lt;p&gt;export default Button;
+classnames 은 NPM이라는 프로그램을 통해 설치할 수 있습니다. 터미널에서 npm install classnames 을 입력하고 설치한 다음에, 위 예시처럼 import 로 불러와서 사용하면 됩니다. NPM 저장소 사이트로 들어가면 사용 방법과 설명이 나와있음.&lt;/p&gt;
+&lt;p&gt;NPM classnames 패키지: &lt;a href=&quot;https://www.npmjs.com/package/classnames&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://www.npmjs.com/package/classnames&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[React state 정리하기]]></title><description><![CDATA[State
 state는 리액트에서 화면을 그려내는 데 굉장히 중요한 역할을 합니다. State라는 단어는 한국어로 '상태'라는 뜻이 있는데요. 리액트에서의 state도 그 의미가 다르지 않습니다. 상태가 바뀔 때마다 화면을 새롭게 그려내는 방식으로 …]]></description><link>https://nicorobinv.github.io/React-study_4/</link><guid isPermaLink="false">https://nicorobinv.github.io/React-study_4/</guid><pubDate>Mon, 23 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;State
 state는 리액트에서 화면을 그려내는 데 굉장히 중요한 역할을 합니다.&lt;/p&gt;
 &lt;p&gt;State라는 단어는 한국어로 &apos;상태&apos;라는 뜻이 있는데요. 리액트에서의 state도 그 의미가 다르지 않습니다.&lt;/p&gt;
@@ -304,7 +383,15 @@ document.getElementById(&apos;root&apos;)
 그런데도 만약 JSX 문법을 활용할 때 조건문이 꼭 필요하다면 조건 연산자를, 반복문이 꼭 필요하다면 배열의 반복 메소드를 활용하자.</content:encoded></item><item><title><![CDATA[Git 협업하기 정리 노트]]></title><description><![CDATA[git fetch : 로컬 레포지토리에서 현재 HEAD가 가리키는 브랜치의 업스트림(upstream) 브랜치로부터 최신 커밋들을 가져옴(가져오기만 한다는 점에서, 가져와서 머지까지 하는 git pull과는 차이가 있음)
 git blame : 특정 파…]]></description><link>https://nicorobinv.github.io/Git-study_5/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_5/</guid><pubDate>Tue, 17 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git fetch : 로컬 레포지토리에서 현재 HEAD가 가리키는 브랜치의 업스트림(upstream) 브랜치로부터 최신 커밋들을 가져옴(가져오기만 한다는 점에서, 가져와서 머지까지 하는 git pull과는 차이가 있음)
 git blame : 특정 파일의 내용 한줄한줄이 어떤 커밋에 의해 생긴 것인지 출력
-git revert : 특정 커밋에서 이루어진 작업을 되돌리는(취소하는) 커밋을 새로 생성&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git 내용 총정리 노트]]></title><description><![CDATA[Git 써보기
+git revert : 특정 커밋에서 이루어진 작업을 되돌리는(취소하는) 커밋을 새로 생성&lt;/p&gt;</content:encoded></item><item><title><![CDATA[branch 정리 노트]]></title><description><![CDATA[git branch 새 브랜치 이름 : 새로운 브랜치를 생성
+git checkout -b 새 브랜치 이름 : 새로운 브랜치를 생성하고 그 브랜치로 바로 이동
+git branch -d 기존 브랜치 이름 : 브랜치 삭제
+git checkout 기존 브랜…]]></description><link>https://nicorobinv.github.io/Git-study_4/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_4/</guid><pubDate>Tue, 17 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git branch [새 브랜치 이름] : 새로운 브랜치를 생성
+git checkout -b [새 브랜치 이름] : 새로운 브랜치를 생성하고 그 브랜치로 바로 이동
+git branch -d [기존 브랜치 이름] : 브랜치 삭제
+git checkout [기존 브랜치 이름] : 그 브랜치로 이동
+git merge [기존 브랜치 이름] : 현재 브랜치에 다른 브랜치를 머지
+git merge --abort : 머지를 하다가 conflict가 발생했을 때, 일단은 머지 작업을 취소하고 이전 상태로 돌아감&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git 내용 총정리 노트]]></title><description><![CDATA[Git 써보기
 git init : 현재 디렉토리를 Git이 관리하는 프로젝트 디렉토리(=working directory)로 설정하고 그 안에 레포지토리(.git 디렉토리) 생성
 git config user.name 'codeit' : 현재 사용자의 …]]></description><link>https://nicorobinv.github.io/Git-study_6/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_6/</guid><pubDate>Tue, 17 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Git 써보기
 git init : 현재 디렉토리를 Git이 관리하는 프로젝트 디렉토리(=working directory)로 설정하고 그 안에 레포지토리(.git 디렉토리) 생성
@@ -359,27 +446,18 @@ git stash pop [커밋 아이디] : 스택 영역에 저장된 가장 최근의(�
 git cherry-pick [커밋 아이디] : 특정 커밋의 내용을 현재 커밋에 반영
 ! 그 밖에 알아야할 사실&lt;/p&gt;
 &lt;p&gt;(1) git commit이라고만 쓰고 실행하면 커밋 메시지를 입력할 수 있는 텍스트 에디터 창이 뜹니다. 거기서 커밋 메시지를 입력하고 저장하고 나면 커밋이 이루어집니다.&lt;/p&gt;
-&lt;p&gt;(2) git push와 git pull은 그 작업 단위가 브랜치입니다. 예를 들어, master 브랜치에서 git push를 하면 master 브랜치의 내용만 리모트 레포지토리의 master 브랜치로 전송되지, premium 브랜치의 내용이 전송되는 것은 아닙니다.(git push에 --all이라는 옵션을 주면 모든 브랜치의 내용을 전송할 수 있기는 합니다.)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[branch 정리 노트]]></title><description><![CDATA[git branch 새 브랜치 이름 : 새로운 브랜치를 생성
-git checkout -b 새 브랜치 이름 : 새로운 브랜치를 생성하고 그 브랜치로 바로 이동
-git branch -d 기존 브랜치 이름 : 브랜치 삭제
-git checkout 기존 브랜…]]></description><link>https://nicorobinv.github.io/Git-study_4/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_4/</guid><pubDate>Tue, 17 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git branch [새 브랜치 이름] : 새로운 브랜치를 생성
-git checkout -b [새 브랜치 이름] : 새로운 브랜치를 생성하고 그 브랜치로 바로 이동
-git branch -d [기존 브랜치 이름] : 브랜치 삭제
-git checkout [기존 브랜치 이름] : 그 브랜치로 이동
-git merge [기존 브랜치 이름] : 현재 브랜치에 다른 브랜치를 머지
-git merge --abort : 머지를 하다가 conflict가 발생했을 때, 일단은 머지 작업을 취소하고 이전 상태로 돌아감&lt;/p&gt;</content:encoded></item><item><title><![CDATA[GitHub 시작하기 정리 노트]]></title><description><![CDATA[git push -u origin master : 로컬 레포지토리의 내용을 처음으로 리모트 레포지토리에 올릴 때 사용합니다.
-git push : 로컬 레포지토리의 내용을 리모트 레포지토리에 보내기
-git pull : 리모트 레포지토리의 내용을 로컬 …]]></description><link>https://nicorobinv.github.io/Git-study_2/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_2/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git push -u origin master : 로컬 레포지토리의 내용을 처음으로 리모트 레포지토리에 올릴 때 사용합니다.
-git push : 로컬 레포지토리의 내용을 리모트 레포지토리에 보내기
-git pull : 리모트 레포지토리의 내용을 로컬 레포지토리로 가져오기
-git clone [프로젝트의 GitHub 상 주소] : GitHub에 있는 프로젝트를 내 컴퓨터로 가져오기&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Blog test]]></title><description><![CDATA[오늘의 느낀점..github에서 저장소 생성할시에 readme 파일 생성하는건 잘생각하고 하자...]]></description><link>https://nicorobinv.github.io/first-post/</link><guid isPermaLink="false">https://nicorobinv.github.io/first-post/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;오늘의 느낀점..github에서 저장소 생성할시에 readme 파일 생성하는건 잘생각하고 하자...&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git 써보기 정리 노트]]></title><description><![CDATA[git init : 현재 디렉토리를 Git이 관리하는 프로젝트 디렉토리(=working directory)로 설정하고 그 안에 레포지토리(.git 디렉토리) 생성
-git config user.name 'codeit' : 현재 사용자의 아이디를 'co…]]></description><link>https://nicorobinv.github.io/Git-study_1/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_1/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git init : 현재 디렉토리를 Git이 관리하는 프로젝트 디렉토리(=working directory)로 설정하고 그 안에 레포지토리(.git 디렉토리) 생성
-git config user.name &apos;codeit&apos; : 현재 사용자의 아이디를 &apos;codeit&apos;으로 설정(커밋할 때 필요한 정보)
-git config user.email &apos;teacher@codeit.kr&apos; : 현재 사용자의 이메일 주소를 &apos;teacher@codeit.kr&apos;로 설정(커밋할 때 필요한 정보)
-git add [파일 이름] : 수정사항이 있는 특정 파일을 staging area에 올리기
-git add [디렉토리명] : 해당 디렉토리 내에서 수정사항이 있는 모든 파일들을 staging area에 올리기
-git add . : working directory 내의 수정사항이 있는 모든 파일들을 staging area에 올리기
-git reset [파일 이름] : staging area에 올렸던 파일 다시 내리기
-git status : Git이 현재 인식하고 있는 프로젝트 관련 내용들 출력(문제 상황이 발생했을 때 현재 상태를 파악하기 위해 활용하면 좋음)
-git commit -m &quot;커밋 메시지&quot; : 현재 staging area에 있는 것들 커밋으로 남기기
-git help [커맨드 이름] : 사용법이 궁금한 Git 커맨드의 공식 메뉴얼 내용 출력&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;(2) git push와 git pull은 그 작업 단위가 브랜치입니다. 예를 들어, master 브랜치에서 git push를 하면 master 브랜치의 내용만 리모트 레포지토리의 master 브랜치로 전송되지, premium 브랜치의 내용이 전송되는 것은 아닙니다.(git push에 --all이라는 옵션을 주면 모든 브랜치의 내용을 전송할 수 있기는 합니다.)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Blog test]]></title><description><![CDATA[오늘의 느낀점..github에서 저장소 생성할시에 readme 파일 생성하는건 잘생각하고 하자...]]></description><link>https://nicorobinv.github.io/first-post/</link><guid isPermaLink="false">https://nicorobinv.github.io/first-post/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;오늘의 느낀점..github에서 저장소 생성할시에 readme 파일 생성하는건 잘생각하고 하자...&lt;/p&gt;</content:encoded></item><item><title><![CDATA[commit 정리 노트]]></title><description><![CDATA[git log : 커밋 히스토리를 출력
+git log --pretty=oneline : --pretty 옵션을 사용하면 커밋 히스토리를 다양한 방식으로 출력할 수 있습니다. --pretty 옵션에 oneline이라는 값을 주면 커밋 하나당 한 줄씩 …]]></description><link>https://nicorobinv.github.io/Git-study_3/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_3/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git log : 커밋 히스토리를 출력
+git log --pretty=oneline : --pretty 옵션을 사용하면 커밋 히스토리를 다양한 방식으로 출력할 수 있습니다. --pretty 옵션에 oneline이라는 값을 주면 커밋 하나당 한 줄씩 출력해줍니다. --pretty 옵션에 대해 더 자세히 알고싶으면 이 링크를 참고하세요.
+git show [커밋 아이디] : 특정 커밋에서 어떤 변경사항이 있었는지 확인
+git commit --amend : 최신 커밋을 다시 수정해서 새로운 커밋으로 만듦
+git config alias.[별명] [커맨드] : 길이가 긴 커맨드에 별명을 붙여서 이후로 별명으로 해당 커맨드를 실행할 수 있도록 설정
+git diff [커밋 A의 아이디] [커밋 B의 아이디] : 두 커밋 간의 차이 비교
+git reset [옵션] [커밋 아이디] : 옵션에 따라 하는 작업이 달라짐(옵션을 생략하면 --mixed 옵션이 적용됨)
+(1) HEAD가 특정 커밋을 가리키도록 이동시킴(--soft는 여기까지 수행)&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;	(2) staging area도 특정 커밋처럼 리셋(--mixed는 여기까지 수행)
+
+	(3) working directory도 특정 커밋처럼 리셋(--hard는 여기까지 수행)
+
+	그리고 이때 커밋 아이디 대신 HEAD의 위치를 기준으로 한 표기법(예 : HEAD^, HEAD~3)을 사용해도 됨&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;git tag [태그 이름] [커밋 아이디] : 특정 커밋에 태그를 붙임&lt;/p&gt;</content:encoded></item></channel></rss>
