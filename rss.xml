@@ -1,4 +1,311 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev.seungwon Jang | Feed]]></title><description><![CDATA[seungwon Jang's Development Blog]]></description><link>https://nicorobinv.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 31 Aug 2021 15:26:27 GMT</lastBuildDate><item><title><![CDATA[React 배포하기]]></title><description><![CDATA[명령어 복습하기 프로젝트 생성하기
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev.seungwon Jang | Feed]]></title><description><![CDATA[seungwon Jang's Development Blog]]></description><link>https://nicorobinv.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 20 Sep 2021 14:43:58 GMT</lastBuildDate><item><title><![CDATA[Express guide]]></title><description><![CDATA[Hello world 예제
+기본적으로 이 앱은 여러분이 작성할 수 있는 가장 간단한 Express 앱일 것입니다. 이 앱은 하나의 파일로 된 앱이며 Express 생성기를 통해 얻게 되는 앱과는 같지 않습니다. (이 예제와 달리 Express 생성기…]]></description><link>https://nicorobinv.github.io/Express-study_1/</link><guid isPermaLink="false">https://nicorobinv.github.io/Express-study_1/</guid><pubDate>Mon, 20 Sep 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hello world 예제
+기본적으로 이 앱은 여러분이 작성할 수 있는 가장 간단한 Express 앱일 것입니다. 이 앱은 하나의 파일로 된 앱이며 Express 생성기를 통해 얻게 되는 앱과는 같지 않습니다. (이 예제와 달리 Express 생성기를 통해 얻게 되는 앱은 다양한 목적을 위한 여러 JavaScript 파일, Jade 템플리트 및 하위 디렉토리를 포함하는 전체 앱에 대한 스캐폴딩을 작성합니다.)
+먼저, myapp이라는 이름의 디렉토리를 작성한 후 이 디렉토리로 이동하여 npm init를 실행하십시오. 이후 설치 안내서에 따라 express를 종속 항목으로서 설치하십시오.
+myapp 디렉토리에 app.js라는 이름의 파일을 작성한 후 다음과 같은 코드를 추가하십시오.&lt;/p&gt;
+&lt;p&gt;var express = require(&apos;express&apos;);
+var app = express();
+app.get(&apos;/&apos;, function (req, res) {
+res.send(&apos;Hello World!&apos;);
+});
+app.listen(3000, function () {
+console.log(&apos;Example app listening on port 3000!&apos;);
+});
+앱은 서버를 시작하며 3000번 포트에서 연결을 청취합니다. 앱은 루트 URL(/) 또는 라우트에 대한 요청에 “Hello World!”로 응답합니다. 다른 모든 경로에 대해서는 404 Not Found로 응답합니다.
+req(요청) 및 res(응답)는 Node가 제공하는 동일한 오브젝트이며, 따라서 req.pipe(), req.on(&apos;data&apos;, callback) 그리고 Express의 관여가 필요 없는 다른 모든 항목을 호출할 수 있습니다.
+다음의 명령을 이용하여 앱을 실행하십시오.&lt;/p&gt;
+&lt;p&gt;$ node app.js
+이후 브라우저에서 &lt;a href=&quot;http://localhost:3000/%EC%9D%84&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;http://localhost:3000/을&lt;/a&gt; 로드하여 결과물을 확인하십시오.&lt;/p&gt;
+&lt;p&gt;출처: &lt;a href=&quot;https://expressjs.com/ko/starter/hello-world.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://expressjs.com/ko/starter/hello-world.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Express 애플리케이션 생성기
+애플리케이션의 골격을 신속하게 작성하려면 애플리케이션 생성기 도구인 express를 사용하십시오.
+다음의 명령을 이용해 express를 설치하십시오.&lt;/p&gt;
+&lt;p&gt;$ npm install express-generator -g
+다음과 같이 -h 옵션을 이용해 명령의 옵션을 표시하십시오.&lt;/p&gt;
+&lt;p&gt;$ express -h
+Usage: express [options][dir]
+Options:
+-h, --help output usage information
+--version output the version number
+-e, --ejs add ejs engine support
+--hbs add handlebars engine support
+--pug add pug engine support
+-H, --hogan add hogan.js engine support
+--no-view generate without view engine
+-v, --view &lt;engine&gt; add view &lt;engine&gt; support (ejs|hbs|hjs|jade|pug|twig|vash) (defaults to jade)
+-c, --css &lt;engine&gt; add stylesheet &lt;engine&gt; support (less|stylus|compass|sass) (defaults to plain css)
+--git add .gitignore
+-f, --force force on non-empty directory
+예를 들면, 다음의 예에서는 &lt;em&gt;myapp&lt;/em&gt;라는 이름의 Express 앱을 현재 작업 디렉토리에 작성합니다.&lt;/p&gt;
+&lt;p&gt;$ express --view=pug myapp
+create : myapp
+create : myapp/package.json
+create : myapp/app.js
+create : myapp/public
+create : myapp/public/javascripts
+create : myapp/public/images
+create : myapp/routes
+create : myapp/routes/index.js
+create : myapp/routes/users.js
+create : myapp/public/stylesheets
+create : myapp/public/stylesheets/style.css
+create : myapp/views
+create : myapp/views/index.pug
+create : myapp/views/layout.pug
+create : myapp/views/error.pug
+create : myapp/bin
+create : myapp/bin/www
+이후 다음과 같이 종속 항목을 설치하십시오.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;cd myapp&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.8888799999999999em;vertical-align:-0.19444em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.03588em;&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot;&gt;p&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; npm install
+MacOS 또는 Linux에서는 다음 명령을 사용하여 앱을 실행하십시오.&lt;/p&gt;
+&lt;p&gt;$ DEBUG=myapp:* npm start
+Windows에서는 다음 명령을 사용하십시오.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;set DEBUG=myapp:* &amp;#x26; npm start
+이후 브라우저에서 &lt;a href=&quot;http://localhost:3000/%EC%9D%84&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;http://localhost:3000/을&lt;/a&gt; 로드하여 앱에 액세스하십시오.
+생성된 앱은 다음과 같은 디렉토리 구조를 갖습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;.
+├── app.js
+├── bin
+│ └── www
+├── package.json
+├── public
+│ ├── images
+│ ├── javascripts
+│ └── stylesheets
+│ └── style.css
+├── routes
+│ ├── index.js
+│ └── users.js
+└── views
+├── error.pug
+├── index.pug
+└── layout.pug
+7 directories, 9 files
+생성기에 의해 작성된 앱 구조는 Express 앱을 구조화하는 여러 방법 중 하나에 불과합니다. 이러한 구조를 사용하거나 사용자의 요구사항에 가장 적합하도록 구조를 수정하십시오.&lt;/p&gt;
+&lt;p&gt;출처: &lt;a href=&quot;https://expressjs.com/ko/starter/generator.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://expressjs.com/ko/starter/generator.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;기본 라우팅
+라우팅은 URI(또는 경로) 및 특정한 HTTP 요청 메소드(GET, POST 등)인 특정 엔드포인트에 대한 클라이언트 요청에 애플리케이션이 응답하는 방법을 결정하는 것을 말합니다.
+각 라우트는 하나 이상의 핸들러 함수를 가질 수 있으며, 이러한 함수는 라우트가 일치할 때 실행됩니다.
+라우트 정의에는 다음과 같은 구조가 필요합니다.&lt;/p&gt;
+&lt;p&gt;app.METHOD(PATH, HANDLER)
+여기서,
+• app은 express의 인스턴스입니다.
+• METHOD는 HTTP 요청 메소드입니다.
+• PATH는 서버에서의 경로입니다.
+• HANDLER는 라우트가 일치할 때 실행되는 함수입니다.
+이 학습서에서는 app이라는 이름의 express 인스턴스가 작성되며 서버가 실행 중인 것으로 가정합니다. 앱의 작성 및 시작에 익숙하지 않은 경우에는 Hello world 예제를 참조하십시오.
+다음 예에서는 간단한 라우트의 정의를 설명합니다.
+홈 페이지에서 Hello World!로 응답:&lt;/p&gt;
+&lt;p&gt;app.get(&apos;/&apos;, function (req, res) {
+res.send(&apos;Hello World!&apos;);
+});
+애플리케이션의 홈 페이지인 루트 라우트(/)에서 POST 요청에 응답:&lt;/p&gt;
+&lt;p&gt;app.post(&apos;/&apos;, function (req, res) {
+res.send(&apos;Got a POST request&apos;);
+});
+/user 라우트에 대한 PUT 요청에 응답:&lt;/p&gt;
+&lt;p&gt;app.put(&apos;/user&apos;, function (req, res) {
+res.send(&apos;Got a PUT request at /user&apos;);
+});
+/user 라우트에 대한 DELETE 요청에 응답:&lt;/p&gt;
+&lt;p&gt;app.delete(&apos;/user&apos;, function (req, res) {
+res.send(&apos;Got a DELETE request at /user&apos;);
+});
+라우팅에 대한 자세한 내용을 확인하려면 라우팅 안내서를 참조하십시오.&lt;/p&gt;
+&lt;p&gt;출처: &lt;a href=&quot;https://expressjs.com/ko/starter/basic-routing.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://expressjs.com/ko/starter/basic-routing.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Express에서 정적 파일 제공
+이미지, CSS 파일 및 JavaScript 파일과 같은 정적 파일을 제공하려면 Express의 기본 제공 미들웨어 함수인 express.static을 사용하십시오.
+정적 자산이 포함된 디렉토리의 이름을 express.static 미들웨어 함수에 전달하면 파일의 직접적인 제공을 시작할 수 있습니다. 예를 들면, 다음과 같은 코드를 이용하여 public이라는 이름의 디렉토리에 포함된 이미지, CSS 파일 및 JavaScript 파일을 제공하십시오.&lt;/p&gt;
+&lt;p&gt;app.use(express.static(&apos;public&apos;));
+이제 다음과 같이 public 디렉토리에 포함된 파일을 로드할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://localhost:3000/images/kitten.jpg&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;http://localhost:3000/images/kitten.jpg&lt;/a&gt;
+&lt;a href=&quot;http://localhost:3000/css/style.css&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;http://localhost:3000/css/style.css&lt;/a&gt;
+&lt;a href=&quot;http://localhost:3000/js/app.js&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;http://localhost:3000/js/app.js&lt;/a&gt;
+&lt;a href=&quot;http://localhost:3000/images/bg.png&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;http://localhost:3000/images/bg.png&lt;/a&gt;
+&lt;a href=&quot;http://localhost:3000/hello.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;http://localhost:3000/hello.html&lt;/a&gt;
+Express는 정적 디렉토리에 대해 상대적으로 파일을 검색하며, 따라서 정적 디렉토리의 이름은 URL의 일부가 아닙니다.
+여러 개의 정적 자산 디렉토리를 이용하려면 다음과 같이 express.static 미들웨어 함수를 여러 번 호출하십시오.&lt;/p&gt;
+&lt;p&gt;app.use(express.static(&apos;public&apos;));
+app.use(express.static(&apos;files&apos;));
+Express는 express.static 미들웨어 함수를 이용해 정적 디렉토리를 설정한 순서대로 파일을 검색합니다.
+express.static 함수를 통해 제공되는 파일에 대한 가상 경로 접두부(파일 시스템 내에 해당 경로가 실제로 존재하지 않는 경우)를 작성하려면, 아래에 표시된 것과 같이 정적 디렉토리에 대한 마운트 경로를 지정하십시오.&lt;/p&gt;
+&lt;p&gt;app.use(&apos;/static&apos;, express.static(&apos;public&apos;));
+이제 /static 경로 접두부를 통해 public 디렉토리에 포함된 파일을 로드할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://localhost:3000/static/images/kitten.jpg&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;http://localhost:3000/static/images/kitten.jpg&lt;/a&gt;
+&lt;a href=&quot;http://localhost:3000/static/css/style.css&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;http://localhost:3000/static/css/style.css&lt;/a&gt;
+&lt;a href=&quot;http://localhost:3000/static/js/app.js&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;http://localhost:3000/static/js/app.js&lt;/a&gt;
+&lt;a href=&quot;http://localhost:3000/static/images/bg.png&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;http://localhost:3000/static/images/bg.png&lt;/a&gt;
+&lt;a href=&quot;http://localhost:3000/static/hello.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;http://localhost:3000/static/hello.html&lt;/a&gt;
+그러나 express.static 함수에 제공되는 경로는 node 프로세스가 실행되는 디렉토리에 대해 상대적입니다. Express 앱을 다른 디렉토리에서 실행하는 경우에는 다음과 같이 제공하기 원하는 디렉토리의 절대 경로를 사용하는 것이 더 안전합니다.&lt;/p&gt;
+&lt;p&gt;app.use(&apos;/static&apos;, express.static(__dirname + &apos;/public&apos;));&lt;/p&gt;
+&lt;p&gt;출처: &lt;a href=&quot;https://expressjs.com/ko/starter/static-files.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://expressjs.com/ko/starter/static-files.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;라우팅
+라우팅은 애플리케이션 엔드 포인트(URI)의 정의, 그리고 URI가 클라이언트 요청에 응답하는 방식을 말합니다. 라우팅에 대한 소개는 기본 라우팅을 참조하십시오.
+다음 코드는 매우 기본적인 라우트의 예입니다.&lt;/p&gt;
+&lt;p&gt;var express = require(&apos;express&apos;);
+var app = express();
+// respond with &quot;hello world&quot; when a GET request is made to the homepage
+app.get(&apos;/&apos;, function(req, res) {
+res.send(&apos;hello world&apos;);
+});
+라우트 메소드
+라우트 메소드는 HTTP 메소드 중 하나로부터 파생되며, express 클래스의 인스턴스에 연결됩니다.
+다음 코드는 앱의 루트에 대한 GET 및 POST 메소드에 대해 정의된 라우트의 예입니다.&lt;/p&gt;
+&lt;p&gt;// GET method route
+app.get(&apos;/&apos;, function (req, res) {
+res.send(&apos;GET request to the homepage&apos;);
+});
+// POST method route
+app.post(&apos;/&apos;, function (req, res) {
+res.send(&apos;POST request to the homepage&apos;);
+});
+Express는 HTTP 메소드에 해당하는 다음과 같은 라우팅 메소드를 지원합니다. get, post, put, head, delete, options, trace, copy, lock, mkcol, move, purge, propfind, proppatch, unlock, report, mkactivity, checkout, merge, m-search, notify, subscribe, unsubscribe, patch, search 및 connect.
+올바르지 않은 JavaScript 변수 이름으로 변환되는 메소드를 라우팅하려면 대괄호 표기법을 사용하십시오. 예를 들면 app[&apos;m-search&apos;](&apos;/&apos;, function ... 등과 같습니다.
+특수한 라우팅 메소드인 app.all()은 어떠한 HTTP 메소드로부터도 파생되지 않습니다. 이 메소드는 모든 요청 메소드에 대해 한 경로에서 미들웨어 함수를 로드하는 데 사용됩니다.
+다음 예에서는, GET, POST, PUT 또는 DELETE 메소드를 사용하는 경우, 또는 http 모듈에서 지원되는 기타 모든 HTTP 요청 메소드를 사용하는 경우 등의 “/secret”에 대한 요청을 위하여 핸들러가 실행됩니다.&lt;/p&gt;
+&lt;p&gt;app.all(&apos;/secret&apos;, function (req, res, next) {
+console.log(&apos;Accessing the secret section ...&apos;);
+next(); // pass control to the next handler
+});
+라우트 경로
+라우트 경로는, 요청 메소드와의 조합을 통해, 요청이 이루어질 수 있는 엔드포인트를 정의합니다. 라우트 경로는 문자열, 문자열 패턴 또는 정규식일 수 있습니다.
+Express는 라우트 경로의 일치를 위해 path-to-regexp를 사용합니다. 라우트 경로를 정의할 수 있는 모든 가능성을 확인하려면 path-to-regexp 문서를 참조하십시오. Express Route Tester는 기본적인 Express 라우트의 테스트를 위한 편리한 도구이지만, 패턴 일치는 지원하지 않습니다.
+조회 문자열은 라우트 경로의 일부가 아닙니다.
+문자열을 기반으로 하는 라우트 경로의 몇 가지 예는 다음과 같습니다.
+다음의 라우트 경로는 요청을 루트 라우트 /에 일치시킵니다.&lt;/p&gt;
+&lt;p&gt;app.get(&apos;/&apos;, function (req, res) {
+res.send(&apos;root&apos;);
+});
+다음의 라우트 경로는 요청을 /about에 일치시킵니다.&lt;/p&gt;
+&lt;p&gt;app.get(&apos;/about&apos;, function (req, res) {
+res.send(&apos;about&apos;);
+});
+다음의 라우트 경로는 요청을 /random.text에 일치시킵니다.&lt;/p&gt;
+&lt;p&gt;app.get(&apos;/random.text&apos;, function (req, res) {
+res.send(&apos;random.text&apos;);
+});
+문자열 패턴을 기반으로 하는 라우트 경로의 몇 가지 예는 다음과 같습니다.
+다음의 라우트 경로는 acd 및 abcd와 일치합니다.&lt;/p&gt;
+&lt;p&gt;app.get(&apos;/ab?cd&apos;, function(req, res) {
+res.send(&apos;ab?cd&apos;);
+});
+다음의 라우트 경로는 abcd, abbcd 및 abbbcd 등과 일치합니다.&lt;/p&gt;
+&lt;p&gt;app.get(&apos;/ab+cd&apos;, function(req, res) {
+res.send(&apos;ab+cd&apos;);
+});
+다음의 라우트 경로는 abcd, abxcd, abRABDOMcd 및 ab123cd 등과 일치합니다.&lt;/p&gt;
+&lt;p&gt;app.get(&apos;/ab&lt;em&gt;cd&apos;, function(req, res) {
+res.send(&apos;ab&lt;/em&gt;cd&apos;);
+});
+다음의 라우트 경로는 /abe 및 /abcde와 일치합니다.&lt;/p&gt;
+&lt;p&gt;app.get(&apos;/ab(cd)?e&apos;, function(req, res) {
+res.send(&apos;ab(cd)?e&apos;);
+});
+?, +, * 및 () 문자는 정규식 문자의 서브세트입니다. 하이픈(-) 및 점(.)은 문자열 기반 경로에 의해 문자 그대로 해석됩니다.
+정규식을 기반으로 하는 라우트 경로의 예:
+다음의 라우트 경로는 라우트 이름에 “a”가 포함된 모든 항목과 일치합니다.&lt;/p&gt;
+&lt;p&gt;app.get(/a/, function(req, res) {
+res.send(&apos;/a/&apos;);
+});
+다음의 라우트 경로는 butterfly 및 dragonfly와 일치하지만, butterflyman 및 dragonfly man 등과 일치하지 않습니다.&lt;/p&gt;
+&lt;p&gt;app.get(/.&lt;em&gt;fly$/, function(req, res) {
+res.send(&apos;/.&lt;/em&gt;fly$/&apos;);
+});
+라우트 핸들러
+미들웨어와 비슷하게 작동하는 여러 콜백 함수를 제공하여 요청을 처리할 수 있습니다. 유일한 차이점은 이러한 콜백은 next(&apos;route&apos;)를 호출하여 나머지 라우트 콜백을 우회할 수도 있다는 점입니다. 이러한 메커니즘을 이용하면 라우트에 대한 사전 조건을 지정한 후, 현재의 라우트를 계속할 이유가 없는 경우에는 제어를 후속 라우트에 전달할 수 있습니다.
+다음 예에 나타난 것과 같이, 라우트 핸들러는 함수나 함수 배열의 형태 또는 둘을 조합한 형태일 수 있습니다.
+하나의 콜백 함수는 하나의 라우트를 처리할 수 있습니다. 예를 들면 다음과 같습니다.&lt;/p&gt;
+&lt;p&gt;app.get(&apos;/example/a&apos;, function (req, res) {
+res.send(&apos;Hello from A!&apos;);
+});
+2개 이상의 콜백 함수는 하나의 라우트를 처리할 수 있습니다(next 오브젝트를 반드시 지정해야 함). 예를 들면 다음과 같습니다.&lt;/p&gt;
+&lt;p&gt;app.get(&apos;/example/b&apos;, function (req, res, next) {
+console.log(&apos;the response will be sent by the next function ...&apos;);
+next();
+}, function (req, res) {
+res.send(&apos;Hello from B!&apos;);
+});
+하나의 콜백 함수 배열은 하나의 라우트를 처리할 수 있습니다. 예를 들면 다음과 같습니다.&lt;/p&gt;
+&lt;p&gt;var cb0 = function (req, res, next) {
+console.log(&apos;CB0&apos;);
+next();
+}
+var cb1 = function (req, res, next) {
+console.log(&apos;CB1&apos;);
+next();
+}
+var cb2 = function (req, res) {
+res.send(&apos;Hello from C!&apos;);
+}
+app.get(&apos;/example/c&apos;, [cb0, cb1, cb2]);
+독립적인 함수와 함수 배열의 조합은 하나의 라우트를 처리할 수 있습니다. 예를 들면 다음과 같습니다.&lt;/p&gt;
+&lt;p&gt;var cb0 = function (req, res, next) {
+console.log(&apos;CB0&apos;);
+next();
+}
+var cb1 = function (req, res, next) {
+console.log(&apos;CB1&apos;);
+next();
+}
+app.get(&apos;/example/d&apos;, [cb0, cb1], function (req, res, next) {
+console.log(&apos;the response will be sent by the next function ...&apos;);
+next();
+}, function (req, res) {
+res.send(&apos;Hello from D!&apos;);
+});
+응답 메소드
+다음 표에 표시된 응답 오브젝트에 대한 메소드(res)는 응답을 클라이언트로 전송하고 요청-응답 주기를 종료할 수 있습니다. 라우트 핸들러로부터 다음 메소드 중 어느 하나도 호출되지 않는 경우, 클라이언트 요청은 정지된 채로 방치됩니다.
+메소드 설명
+res.download() 파일이 다운로드되도록 프롬프트합니다.
+res.end() 응답 프로세스를 종료합니다.
+res.json() JSON 응답을 전송합니다.
+res.jsonp() JSONP 지원을 통해 JSON 응답을 전송합니다.
+res.redirect() 요청의 경로를 재지정합니다.
+res.render() 보기 템플리트를 렌더링합니다.
+res.send() 다양한 유형의 응답을 전송합니다.
+res.sendFile 파일을 옥텟 스트림의 형태로 전송합니다.
+res.sendStatus() 응답 상태 코드를 설정한 후 해당 코드를 문자열로 표현한 내용을 응답 본문으로서 전송합니다.
+app.route()
+app.route()를 이용하면 라우트 경로에 대하여 체인 가능한 라우트 핸들러를 작성할 수 있습니다. 경로는 한 곳에 지정되어 있으므로, 모듈식 라우트를 작성하면 중복성과 오타가 감소하여 도움이 됩니다. 라우트에 대한 자세한 정보는 Router() 문서를 참조하십시오.
+app.route()를 사용하여 정의된 체인 라우트 핸들러의 예는 다음과 같습니다.&lt;/p&gt;
+&lt;p&gt;app.route(&apos;/book&apos;)
+.get(function(req, res) {
+res.send(&apos;Get a random book&apos;);
+})
+.post(function(req, res) {
+res.send(&apos;Add a book&apos;);
+})
+.put(function(req, res) {
+res.send(&apos;Update the book&apos;);
+});
+express.Router
+express.Router 클래스를 사용하면 모듈식 마운팅 가능한 핸들러를 작성할 수 있습니다. Router 인스턴스는 완전한 미들웨어이자 라우팅 시스템이며, 따라서 “미니 앱(mini-app)”이라고 불리는 경우가 많습니다.
+다음 예에서는 라우터를 모듈로서 작성하고, 라우터 모듈에서 미들웨어 함수를 로드하고, 몇몇 라우트를 정의하고, 기본 앱의 한 경로에 라우터 모듈을 마운트합니다.
+다음의 내용이 입력된 birds.js라는 이름의 라우터 파일을 앱 디렉토리에 작성하십시오.&lt;/p&gt;
+&lt;p&gt;var express = require(&apos;express&apos;);
+var router = express.Router();
+// middleware that is specific to this router
+router.use(function timeLog(req, res, next) {
+console.log(&apos;Time: &apos;, Date.now());
+next();
+});
+// define the home page route
+router.get(&apos;/&apos;, function(req, res) {
+res.send(&apos;Birds home page&apos;);
+});
+// define the about route
+router.get(&apos;/about&apos;, function(req, res) {
+res.send(&apos;About birds&apos;);
+});
+module.exports = router;
+이후 앱 내에서 다음과 같이 라우터 모듈을 로드하십시오.&lt;/p&gt;
+&lt;p&gt;var birds = require(&apos;./birds&apos;);
+...
+app.use(&apos;/birds&apos;, birds);
+앱은 이제 /birds 및 /birds/about에 대한 요청을 처리할 수 있게 되었으며, 해당 라우트에 대한 특정한 미들웨어 함수인 timeLog를 호출할 것입니다.&lt;/p&gt;
+&lt;p&gt;출처: &lt;a href=&quot;https://expressjs.com/ko/guide/routing.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://expressjs.com/ko/guide/routing.html&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[React 배포하기]]></title><description><![CDATA[명령어 복습하기 프로젝트 생성하기
 npm init react-app .
 터미널에서 원하는 디렉토리에 들어가서 npm init react-app .를 입력하면 현재 디렉토리에 리액트 프로젝트를 생성합니다. 개발 모드 실행하기
 npm start (npm…]]></description><link>https://nicorobinv.github.io/React-study_6/</link><guid isPermaLink="false">https://nicorobinv.github.io/React-study_6/</guid><pubDate>Wed, 01 Sep 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;명령어 복습하기&lt;/p&gt;
@@ -398,7 +705,10 @@ alert(&apos;곧 도착합니다!&apos;);
 document.getElementById(&apos;root&apos;)
 );
 단, JSX 문법에서 중괄호는 자바스크립트 표현식을 다룰 때 활용하기 때문에, 중괄호 안에서 for, if문 등의 문장은 다룰 수 없다는 점은 꼭 기억해 주세요.
-그런데도 만약 JSX 문법을 활용할 때 조건문이 꼭 필요하다면 조건 연산자를, 반복문이 꼭 필요하다면 배열의 반복 메소드를 활용하자.</content:encoded></item><item><title><![CDATA[branch 정리 노트]]></title><description><![CDATA[git branch 새 브랜치 이름 : 새로운 브랜치를 생성
+그런데도 만약 JSX 문법을 활용할 때 조건문이 꼭 필요하다면 조건 연산자를, 반복문이 꼭 필요하다면 배열의 반복 메소드를 활용하자.</content:encoded></item><item><title><![CDATA[Git 협업하기 정리 노트]]></title><description><![CDATA[git fetch : 로컬 레포지토리에서 현재 HEAD가 가리키는 브랜치의 업스트림(upstream) 브랜치로부터 최신 커밋들을 가져옴(가져오기만 한다는 점에서, 가져와서 머지까지 하는 git pull과는 차이가 있음)
+git blame : 특정 파…]]></description><link>https://nicorobinv.github.io/Git-study_5/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_5/</guid><pubDate>Tue, 17 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git fetch : 로컬 레포지토리에서 현재 HEAD가 가리키는 브랜치의 업스트림(upstream) 브랜치로부터 최신 커밋들을 가져옴(가져오기만 한다는 점에서, 가져와서 머지까지 하는 git pull과는 차이가 있음)
+git blame : 특정 파일의 내용 한줄한줄이 어떤 커밋에 의해 생긴 것인지 출력
+git revert : 특정 커밋에서 이루어진 작업을 되돌리는(취소하는) 커밋을 새로 생성&lt;/p&gt;</content:encoded></item><item><title><![CDATA[branch 정리 노트]]></title><description><![CDATA[git branch 새 브랜치 이름 : 새로운 브랜치를 생성
 git checkout -b 새 브랜치 이름 : 새로운 브랜치를 생성하고 그 브랜치로 바로 이동
 git branch -d 기존 브랜치 이름 : 브랜치 삭제
 git checkout 기존 브랜…]]></description><link>https://nicorobinv.github.io/Git-study_4/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_4/</guid><pubDate>Tue, 17 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git branch [새 브랜치 이름] : 새로운 브랜치를 생성
@@ -461,17 +771,4 @@ git stash pop [커밋 아이디] : 스택 영역에 저장된 가장 최근의(�
 git cherry-pick [커밋 아이디] : 특정 커밋의 내용을 현재 커밋에 반영
 ! 그 밖에 알아야할 사실&lt;/p&gt;
 &lt;p&gt;(1) git commit이라고만 쓰고 실행하면 커밋 메시지를 입력할 수 있는 텍스트 에디터 창이 뜹니다. 거기서 커밋 메시지를 입력하고 저장하고 나면 커밋이 이루어집니다.&lt;/p&gt;
-&lt;p&gt;(2) git push와 git pull은 그 작업 단위가 브랜치입니다. 예를 들어, master 브랜치에서 git push를 하면 master 브랜치의 내용만 리모트 레포지토리의 master 브랜치로 전송되지, premium 브랜치의 내용이 전송되는 것은 아닙니다.(git push에 --all이라는 옵션을 주면 모든 브랜치의 내용을 전송할 수 있기는 합니다.)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git 협업하기 정리 노트]]></title><description><![CDATA[git fetch : 로컬 레포지토리에서 현재 HEAD가 가리키는 브랜치의 업스트림(upstream) 브랜치로부터 최신 커밋들을 가져옴(가져오기만 한다는 점에서, 가져와서 머지까지 하는 git pull과는 차이가 있음)
-git blame : 특정 파…]]></description><link>https://nicorobinv.github.io/Git-study_5/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_5/</guid><pubDate>Tue, 17 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git fetch : 로컬 레포지토리에서 현재 HEAD가 가리키는 브랜치의 업스트림(upstream) 브랜치로부터 최신 커밋들을 가져옴(가져오기만 한다는 점에서, 가져와서 머지까지 하는 git pull과는 차이가 있음)
-git blame : 특정 파일의 내용 한줄한줄이 어떤 커밋에 의해 생긴 것인지 출력
-git revert : 특정 커밋에서 이루어진 작업을 되돌리는(취소하는) 커밋을 새로 생성&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git 써보기 정리 노트]]></title><description><![CDATA[git init : 현재 디렉토리를 Git이 관리하는 프로젝트 디렉토리(=working directory)로 설정하고 그 안에 레포지토리(.git 디렉토리) 생성
-git config user.name 'codeit' : 현재 사용자의 아이디를 'co…]]></description><link>https://nicorobinv.github.io/Git-study_1/</link><guid isPermaLink="false">https://nicorobinv.github.io/Git-study_1/</guid><pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;git init : 현재 디렉토리를 Git이 관리하는 프로젝트 디렉토리(=working directory)로 설정하고 그 안에 레포지토리(.git 디렉토리) 생성
-git config user.name &apos;codeit&apos; : 현재 사용자의 아이디를 &apos;codeit&apos;으로 설정(커밋할 때 필요한 정보)
-git config user.email &apos;teacher@codeit.kr&apos; : 현재 사용자의 이메일 주소를 &apos;teacher@codeit.kr&apos;로 설정(커밋할 때 필요한 정보)
-git add [파일 이름] : 수정사항이 있는 특정 파일을 staging area에 올리기
-git add [디렉토리명] : 해당 디렉토리 내에서 수정사항이 있는 모든 파일들을 staging area에 올리기
-git add . : working directory 내의 수정사항이 있는 모든 파일들을 staging area에 올리기
-git reset [파일 이름] : staging area에 올렸던 파일 다시 내리기
-git status : Git이 현재 인식하고 있는 프로젝트 관련 내용들 출력(문제 상황이 발생했을 때 현재 상태를 파악하기 위해 활용하면 좋음)
-git commit -m &quot;커밋 메시지&quot; : 현재 staging area에 있는 것들 커밋으로 남기기
-git help [커맨드 이름] : 사용법이 궁금한 Git 커맨드의 공식 메뉴얼 내용 출력&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;(2) git push와 git pull은 그 작업 단위가 브랜치입니다. 예를 들어, master 브랜치에서 git push를 하면 master 브랜치의 내용만 리모트 레포지토리의 master 브랜치로 전송되지, premium 브랜치의 내용이 전송되는 것은 아닙니다.(git push에 --all이라는 옵션을 주면 모든 브랜치의 내용을 전송할 수 있기는 합니다.)&lt;/p&gt;</content:encoded></item></channel></rss>
