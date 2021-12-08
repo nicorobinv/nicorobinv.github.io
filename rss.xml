@@ -1,4 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev.seungwon Jang | Feed]]></title><description><![CDATA[seungwon Jang's Development Blog]]></description><link>https://nicorobinv.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 27 Oct 2021 14:05:27 GMT</lastBuildDate><item><title><![CDATA[javascript 표현식과 연산자]]></title><description><![CDATA[표현식 (expression)은 자바스크립트 인터프리터가 값으로 평가하는(evaluate) 자바스크립트 구문이다. 예를 들어 프로그램에 포함된 임의의 상수는 표현식의 아주 간단한 형태다. 변수 이름 또한 간단한 표현식으로, 변수에 할당된 임의의 값으…]]></description><link>https://nicorobinv.github.io/javascript-study_3/</link><guid isPermaLink="false">https://nicorobinv.github.io/javascript-study_3/</guid><pubDate>Wed, 27 Oct 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;표현식 (expression)은 자바스크립트 인터프리터가 값으로 평가하는(evaluate) 자바스크립트 구문이다. 예를 들어 프로그램에 포함된 임의의 상수는 표현식의 아주 간단한 형태다. 변수 이름 또한 간단한 표현식으로, 변수에 할당된 임의의 값으로 평가된다. 이처럼 간단한 표현식들을 사용해 복잡한 표현식도 만들 수 있다. 예를 들어 배열 접근 표현식은 열린 대괄호([) 와 숫자로 평가되는 표현식, 닫힌 대괄호(])가 결합된 하나의 표현식이다. 이렇게 결합된 복잡 표현식은 배열의 특정 위치에 저장된 값으로 평가된다. 이와 유사하게, 함수 호출 표현식은 함수 객체와 인자로 사용되는 하나 이상의 표현식들이 결합해 하나의 복합 표현식이 된다.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev.seungwon Jang | Feed]]></title><description><![CDATA[seungwon Jang's Development Blog]]></description><link>https://nicorobinv.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 08 Dec 2021 12:13:14 GMT</lastBuildDate><item><title><![CDATA[SQL 국제 표준과 MySQL]]></title><description><![CDATA[데이터베이스를 다루기 위해서는 (1) DBMS라는 프로그램을 사용해야하고, (2) DBMS는 결국 SQL이라고 하는 언어로 조작해야 한다고 했습니다. 이 SQL이 무엇인지 좀더 자세히 알아보겠습니다. SQL의 역사
+1970년대 초, IBM이라고 하는…]]></description><link>https://nicorobinv.github.io/DATABASE-study_1/</link><guid isPermaLink="false">https://nicorobinv.github.io/DATABASE-study_1/</guid><pubDate>Wed, 08 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;데이터베이스를 다루기 위해서는&lt;/p&gt;
+&lt;p&gt;(1) DBMS라는 프로그램을 사용해야하고,&lt;/p&gt;
+&lt;p&gt;(2) DBMS는 결국 SQL이라고 하는 언어로 조작해야 한다고 했습니다.&lt;/p&gt;
+&lt;p&gt;이 SQL이 무엇인지 좀더 자세히 알아보겠습니다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;SQL의 역사
+1970년대 초, IBM이라고 하는 컴퓨터 회사는 System/R이라는 DBMS와, 이것을 사용하기 위해 필요한 언어인 SEQUEL을 만들었습니다. SEQUEL은 Structured English Query Language의 줄임말이었는데요. SEQUEL은 &apos;씨퀄&apos;이라고 발음되었습니다. 그런데 SEQUEL은 그 단어가 이미 다른 곳에서 사용되고 있다는 문제(상표권 문제) 때문에 그 이름이 SQL(Structured Query Language)로 변경되었습니다. 이런 역사 때문에 아직도 SQL을 보고 ‘씨퀄’이라고 발음하는 분들도 있는데요. 그것보다는 ‘에스큐엘’이라고 정확하게 발음하는 것이 좋습니다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;SQL은 그 뒤로 IBM, 오라클이라고 하는 회사 등에 의해 제각각 발전하기 시작했습니다. 그러다가 1987년, 국제 표준화 기구(ISO)에서 SQL에 관한 국제 표준(ISO 9075:1987)이 제정되었습니다. 그 뒤로 해당 표준은 기존 내용이 개정되고, 새로운 내용들이 추가됨으로써 발전해갔고, 2020년 6월 기준으로 현재는 2019년 개정안이 최신입니다.&lt;/p&gt;
+&lt;p&gt;정리하면 현재 SQL은 공인된 국제 표준이 있습니다. 하지만 우리가 실제로 사용하는 SQL은 이 국제 표준에 완벽히 부합하지는 않습니다. 이게 무슨 말일까요? 그것은 바로 Oracle, Microsoft SQL Server, MySQL 등의 DBMS에서 지원되는 SQL이 표준을 완벽히 준수하지는 않는다는 뜻입니다.&lt;/p&gt;
+&lt;p&gt;각 DBMS의 SQL들은 SQL 국제 표준을 일부 준수하기는 하지만, 그 준수 정도가 각각 다릅니다.&lt;/p&gt;
+&lt;p&gt;예를 들어, 각 DBMS들은&lt;/p&gt;
+&lt;p&gt;(1) 표준에 있는 기능을 지원하지 않거나&lt;/p&gt;
+&lt;p&gt;(2) 표준에 있는 기능이더라도 다른 표현법을 사용하거나&lt;/p&gt;
+&lt;p&gt;(3) 표준에는 없는 기능을 지원하는&lt;/p&gt;
+&lt;p&gt;등의 방식으로 표준을 조금씩 어기고 있고, 그 모습도 DBMS마다 다른데요.&lt;/p&gt;
+&lt;p&gt;사람의 언어에 비유하자면, SQL 국제 표준이라는 &apos;표준어&apos;가 존재한다면 실제로 각 DBMS가 지원하는 SQL은 &apos;사투리&apos;처럼 조금씩 차이가 있는 것이죠.&lt;/p&gt;
+&lt;p&gt;왜 이런 현상이 발생한 걸까요?&lt;/p&gt;
+&lt;p&gt;그 이유는 다양하지만 일단 많은 DBMS 회사들이 &apos;성능 향상&apos;과 &apos;더 다양한 기능 제공&apos;을 위해서, 차라리 표준을 일부 벗어나는 것을 택하는 경우가 많기 때문입니다. 그리고 DBMS에 관한 모든 사안에 대해서 표준에 기재되어 있는 것도 아니기 때문에, 그런 부분들에 있어서 DBMS마다 차이가 발생하기도 하구요.&lt;/p&gt;
+&lt;p&gt;그래서 SQL을 배울 때는 본인이 사용할 DBMS의 SQL을 바로 공부하는 것이 가장 정확하고 빠른 길입니다.&lt;/p&gt;
+&lt;p&gt;하지만 너무 실망하지 마세요. SQL마다 조금씩 차이가 있더라도 서로 비슷한 부분이 훨씬 더 많기 때문에, 일단 한 DBMS의 SQL만 제대로 배워두면, 다른 DBMS의 SQL을 배우는 것은 어렵지 않습니다.&lt;/p&gt;
+&lt;p&gt;저희는 이번 토픽에서 MySQL이라는 DBMS의 SQL을 배울 겁니다. 만약 여러분이 사용하는 DBMS가 MySQL이 아니라고 해도, 이 토픽의 내용을 열심히 듣고 나면 다른 DBMS도 금방 사용할 수 있을 겁니다.&lt;/p&gt;
+&lt;p&gt;이번에 배우는 SQL문 중 대부분은 다른 DBMS에서도 수정 없이 바로 사용할 수 있을 뿐만 아니라,&lt;/p&gt;
+&lt;p&gt;혹시라도 이 토픽의 내용대로 SQL 문을 썼는데 원하는 결과가 나오지 않더라도, 해당 DBMS에서 같은 기능을 구현하는 다른 표현법을 검색하면 되기 때문입니다. 중요한 건 SQL을 쓸 때 필요한 개념과 원리를 이해하는 것입니다.&lt;/p&gt;
+&lt;p&gt;자, 다음으로는 우리가 사용할 DBMS인 MySQL에 대해서 간단히 살펴볼게요.&lt;/p&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;MySQL이란?
+MySQL이라는 DBMS에 대해 알아보겠습니다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;MySQL은 현재 페이스북, 유튜브 등을 비롯한 유명한 서비스에서도 활발히 사용되고 있는 DBMS입니다.&lt;/p&gt;
+&lt;p&gt;MySQL은 가장 처음 MySQL AB라고 하는 스웨덴 회사에서 개발되었습니다. 그 뒤로 MySQL AB는 2008년, Sun Microsystems라는 회사에 인수되었는데요.&lt;/p&gt;
+&lt;p&gt;Sun Microsystems는 지금 IT 분야에서 아주 중요한 프로그래밍 언어인 자바(Java)를 개발한 회사입니다. 그리고 유닉스 계열의 솔라리스(Solaris)라고 하는 운영 체제를 만들기도 한 회사입니다.&lt;/p&gt;
+&lt;p&gt;2010년에 Sun Microsystems는 Oracle이라는 회사에 인수되었고, 이에 따라 자연스럽게 MySQL 또한 Oracle의 소유가 되었습니다.&lt;/p&gt;
+&lt;p&gt;그럼 Oracle은 어떤 회사일까요? IT 분야에서 일하는 사람이라면 이 회사의 이름을 한번쯤은 들어봤을 텐데요. Oracle은 회사명과 같은, 오라클이라는 DBMS를 서비스하고 있는 회사로, 오라클은 현재 기업용 데이터베이스 시장에서 압도적인 영향력을 발휘하고 있는 DBMS입니다.&lt;/p&gt;
+&lt;p&gt;Oracle은 저작권을 매우 중요시하고, 기술을 상업화해서 이윤을 창출하는 능력으로도 유명한 회사입니다. Oracle은 구글이 자사의 자바 API를 무단으로 베껴서 안드로이드를 만들었고 이것은 &apos;저작권 위반&apos;이라고 주장하며 소송을 제기하기도 했죠. 사실 Sun Microsystems가 Oracle에 인수될 때, 많은 사람들이 Oracle이 자사의 DBMS인 오라클의 영향력을 더 넓히기 위해 MySQL을 시장에서 퇴출시키지 않을까하는 걱정을 하기도 했습니다. 그래서 MySQL을 만들었던 초기 개발자들은 회사에서 나와 MariaDB라고 하는 오픈소스 프로젝트를 시작하기도 했죠. 이 MariaDB 또한 오늘날 인기가 많은 DBMS 중 하나입니다.&lt;/p&gt;
+&lt;p&gt;다행히도 MySQL은 아직 오픈 소스 소프트웨어로 누구나 자유롭게 사용할 수 있습니다. 그리고 그 소스코드를 살펴볼 수도 있죠. 그런데 MySQL의 특이한 점은 Oracle의 상업용 라이센스로도 제공된다는 점입니다. 보통의 경우에는 MySQL을 오픈 소스 소프트웨어로 생각하고 별다른 제한 없이 사용해도 되지만, 만약 오라클에서 제공하는 MySQL에 관한 추가 서비스, 상시 기술 지원 등을 원한다면 상업용 라이센스를 사야합니다. 이 뿐만 아니라&lt;/p&gt;
+&lt;p&gt;만약 MySQL의 소스 코드를 가져다가 일부를 수정하고
+자신의 제품의 일부로 만들어서 재배포하는 상황에서
+그 소스코드를 공개하지 않으려는 기업이 있다면
+이 경우에도 상업용 라이센스가 필요하구요. 관련 내용이 궁금하신 분은 이 링크를 참조하세요.&lt;/p&gt;
+&lt;p&gt;Oracle은 자사의 기존 DBMS인 오라클과 기업 인수를 통해 얻게 된 MySQL을 둘다 잘 서비스하고 있습니다. 알려진 바에 따르면, 오라클과 MySQL 둘다 기술적으로 장단점이 다르고, 어떤 면에서는 상호보완적인 관계의 DBMS이기 때문에 Oracle에서 둘다 잘 관리해나갈 것으로 보인다는 이야기가 많습니다.&lt;/p&gt;
+&lt;p&gt;실제로 두 DBMS의 시장에서의 쓰임새를 보면 약간의 차이가 있습니다. 은행, 거래소 등과 같이 데이터 처리의 정확성, 운영의 안정성 등이 엄격하게 요구되는 분야에서는 오라클이 주로 사용되고 있고, 우리가 흔히 쓰는 앱, 웹 사이트 같은 서비스를 만들 때는 MySQL을 쓰는 경우가 많습니다. 이는 아무래도 오라클이 애초에 신뢰도가 중요한 비즈니스 분야에 적합하게 설계되어 있고, 해당 영역에서의 역사도 길기 때문입니다. 대신 MySQL은 무료로 사용할 수 있고 좀더 가볍다는 점이 장점이죠.&lt;/p&gt;
+&lt;p&gt;MySQL은 여러 DBMS 중에서도 특히 일반 사용자가 사용하기 편하다는 평가를 받습니다. 그리고 간단히 사용해볼 때 요구하는 컴퓨터 성능도 작은 편이라 부담이 덜하구요. 게다가 IT 세계에서는 LAMP(Linux + Apache + MySQL + PHP/Perl/Python)라고 하는 개발 플랫폼의 조합이 이미 관용어가 됐을 정도로, 많은 개발자들이 보편적으로 쓰는 DBMS이기도 합니다.&lt;/p&gt;
+&lt;p&gt;이런 이유때문에 이번 토픽에서 사용할 DBMS로 MySQL을 선정했습니다. 위에서 말한 것처럼 이 MySQL에서 쓰이는 SQL과 그것을 사용하기 위해 필요한 개념들을 잘 익혀두면, 나중에 다른 DBMS에서 쓰일 SQL도 쉽게 배울 수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[javascript 표현식과 연산자]]></title><description><![CDATA[표현식 (expression)은 자바스크립트 인터프리터가 값으로 평가하는(evaluate) 자바스크립트 구문이다. 예를 들어 프로그램에 포함된 임의의 상수는 표현식의 아주 간단한 형태다. 변수 이름 또한 간단한 표현식으로, 변수에 할당된 임의의 값으…]]></description><link>https://nicorobinv.github.io/javascript-study_3/</link><guid isPermaLink="false">https://nicorobinv.github.io/javascript-study_3/</guid><pubDate>Wed, 27 Oct 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;표현식 (expression)은 자바스크립트 인터프리터가 값으로 평가하는(evaluate) 자바스크립트 구문이다. 예를 들어 프로그램에 포함된 임의의 상수는 표현식의 아주 간단한 형태다. 변수 이름 또한 간단한 표현식으로, 변수에 할당된 임의의 값으로 평가된다. 이처럼 간단한 표현식들을 사용해 복잡한 표현식도 만들 수 있다. 예를 들어 배열 접근 표현식은 열린 대괄호([) 와 숫자로 평가되는 표현식, 닫힌 대괄호(])가 결합된 하나의 표현식이다. 이렇게 결합된 복잡 표현식은 배열의 특정 위치에 저장된 값으로 평가된다. 이와 유사하게, 함수 호출 표현식은 함수 객체와 인자로 사용되는 하나 이상의 표현식들이 결합해 하나의 복합 표현식이 된다.&lt;/p&gt;
 &lt;p&gt;복합 표현식을 만드는 가장 쉬운 방법은 연산자(operator)를 사용하는 것이다. 연산자는 피연산자의 값들을(보통 두 개) 어떻게든 결합해 새로운 값을 만들어 낸다. 곱셈 연산자 _가 그 간단한 사례다. 표현식 x _ y는 표현식 x와 y 값의 곱으로 평가된다. 간단히 설명하기 위해, 연산자는 &apos;값으로 평가된다&apos;는 표현 대신, &apos;값을 반환한다&apos;는 표현을 쓰기도 한다.&lt;/p&gt;
 &lt;p&gt;이번 장에서는 자바스크립트에서 사용하는 모든 연산자뿐 아니라, 배열 참조나 함수 호출처럼 연산자를 사용하지 않는 표현식도 다룬다. 만약 독자 여러분이 C 스타일 문법을 사용하는 다른 프로그래밍 언어를 배운 적이 있다면, 자바스크립트의 표현식과 연산자 문법이 한결 친숙할 것이기에 이 장을 좀 더 빠르게 살펴볼 수 있을 것이다.&lt;/p&gt;
 &lt;p&gt;4.1 기본 표현식
@@ -1457,107 +1501,4 @@ return (&lt;/p&gt;
 }
 &lt;p&gt;export default App;
 한 가지 주의해야 할 부분은, 리액트 컴포넌트의 이름은 반드시 첫 글자를 대문자로 작성해야 한다는 것입니다.
-컴포넌트 이름의 첫 글자가 소문자라면 오류가 발생하니깐 꼭 주의!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[React JSX 문법]]></title><description><![CDATA[JSX란?
-JSX는 자바스크립트의 확장 문법인데요. 리액트로 코드를 작성할 때 HTML 문법과 비슷한 이 JSX 문법을 활용하면 훨씬 더 편리하게 화면에 나타낼 코드를 작성할 수가 있게 됩니다. import ReactDOM from 'react-do…]]></description><link>https://nicorobinv.github.io/React-study_1/</link><guid isPermaLink="false">https://nicorobinv.github.io/React-study_1/</guid><pubDate>Fri, 20 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;JSX란?
-JSX는 자바스크립트의 확장 문법인데요. 리액트로 코드를 작성할 때 HTML 문법과 비슷한 이 JSX 문법을 활용하면 훨씬 더 편리하게 화면에 나타낼 코드를 작성할 수가 있게 됩니다.&lt;/p&gt;
-&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
-&lt;p&gt;ReactDOM.render(&lt;h1&gt;안녕 리액트!&lt;/h1&gt;, document.getElementById(&apos;root&apos;));
-JSX 문법
-JSX는 자바스크립트로 HTML과 같은 문법을 사용할 수 있도록 만들어주는 편리한 문법이지만, 그만큼 꼭 지켜야 할 규칙들도 있습니다.&lt;/p&gt;
-&lt;p&gt;HTML과 다른 속성명&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;속성명은 카멜 케이스로 작성하기!
-JSX 문법에서도 태그에 속성을 지정해 줄 수 있습니다. 단, 여러 단어가 조합된 몇몇 속성들을 사용할 때는 반드시 카멜 케이스(Camel Case)로 작성해야 합니다.
-사실 여러 단어가 조합된 HTML 속성들이 많진 않지만, 예를 들면 onclick, onblur, onfocus 등과 같은 이벤트 속성이나, tabindex 같은 속성들이 있습니다.
-이런 속성들은 모두 onClick, onBlur, onFocus, onMouseDown, onMouseOver, tabIndex 처럼 작성하는 것이죠!&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
-&lt;p&gt;ReactDOM.render(
-&lt;button onClick= ... &gt;클릭!&lt;/button&gt;,
-document.getElementById(&apos;root&apos;)
-);
-단, 예외적으로 HTML에서 비표준 속성을 다룰 때 활용하는 data-* 속성은 카멜 케이스(Camel Case)가 아니라 기존의 HTML 문법 그대로 작성하셔야 합니다.&lt;/p&gt;
-&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
-&lt;p&gt;ReactDOM.render(&lt;/p&gt;
-  &lt;div&gt;
-    상태 변경: 
-    &lt;button className=&quot;btn&quot; data-status=&quot;대기중&quot;&gt;대기중&lt;/button&gt;
-    &lt;button className=&quot;btn&quot; data-status=&quot;진행중&quot;&gt;진행중&lt;/button&gt;
-    &lt;button className=&quot;btn&quot; data-status=&quot;완료&quot;&gt;완료&lt;/button&gt;
-  &lt;/div&gt;,
-  document.getElementById(&apos;root&apos;)
-);
-2. 자바스크립트 예약어와 같은 속성명은 사용할 수 없다!
-JSX 문법도 결국은 자바스크립트 문법이기 때문에, for나 class처럼 자바스크립트의 문법에 해당하는 예약어와 똑같은 이름의 속성명은 사용할 수 없습니다.
-그래서 HTML의 for의 경우에는 자바스크립트의 반복문 키워드 for와 겹치기 때문에 htmlFor로, HTML의 class 속성도 자바스크립트의 클래스 키워드 class와 겹치기 때문에 className으로 작성해 주어야 합니다.
-&lt;p&gt;React 공식 문서 - 어트리뷰트의 차이&lt;/p&gt;
-&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
-&lt;p&gt;ReactDOM.render(&lt;/p&gt;
-  &lt;form&gt;
-    &lt;label htmlFor=&quot;name&quot;&gt;이름&lt;/label&gt;
-    &lt;input id=&quot;name&quot; className=&quot;name-input&quot; type=&quot;text&quot; /&gt;
-  &lt;/form&gt;,
-  document.getElementById(&apos;root&apos;)
-);
-반드시 하나의 요소로 감싸기 - Fragment
-JSX 문법을 활용할 때는 반드시 하나의 요소로 감싸주어야 합니다. 그래서 아래 코드처럼 여러 개의 요소를 작성하면 오류가 발생하는데요.
-&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
-&lt;p&gt;ReactDOM.render(&lt;/p&gt;
-  &lt;p&gt;안녕&lt;/p&gt;
-  &lt;p&gt;리액트!&lt;/p&gt;,
-  document.getElementById(&apos;root&apos;)
-);
-이럴 때는 아래 코드처럼 여러 태그를 감싸는 부모 태그를 만들어 하나의 요소로 만들어 주어야 합니다.
-&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
-&lt;p&gt;ReactDOM.render(&lt;/p&gt;
-  &lt;div&gt;
-    &lt;p&gt;안녕&lt;/p&gt;
-    &lt;p&gt;리액트!&lt;/p&gt;
-  &lt;/div&gt;,
-  document.getElementById(&apos;root&apos;)
-);
-하지만 이렇게 작성한다면 때로는 꼭 필요하지 않은 부모 태그가 작성될 수 있겠죠? 그럴 땐 Fragment로 감싸주면 의미 없는 부모 태그를 만들지 않아도 여러 요소를 작성할 수 있습니다.
-&lt;p&gt;import { Fragment } from &apos;react&apos;;
-import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
-&lt;p&gt;ReactDOM.render(
-&lt;Fragment&gt;&lt;/p&gt;
-&lt;p&gt;안녕&lt;/p&gt;
-&lt;p&gt;리액트!&lt;/p&gt;
-&lt;/Fragment&gt;,
-document.getElementById(&apos;root&apos;)
-);
-참고로 Fragment는 아래 코드처럼 빈 태그로 감싸는 단축 문법으로 활용할 수도 있습니다.
-&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
-&lt;p&gt;ReactDOM.render(
-&amp;#x3C;&gt;&lt;/p&gt;
-&lt;p&gt;안녕&lt;/p&gt;
-&lt;p&gt;리액트!&lt;/p&gt;
-&lt;/&gt;,
-document.getElementById(&apos;root&apos;)
-);
-자바스크립트 표현식 넣기
-JSX 문법에서 중괄호({})를 활용하면 자바스크립트 표현식을 넣을 수 있습니다.
-&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
-&lt;p&gt;const product = &apos;맥북&apos;;&lt;/p&gt;
-&lt;p&gt;ReactDOM.render(&lt;/p&gt;
-  &lt;h1&gt;나만의 {product} 주문하기&lt;/h1&gt;,
-  document.getElementById(&apos;root&apos;)
-);
-이런 부분들을 잘 활용하면, 아래 코드처럼 중괄호 안에서 문자열을 조합할 수도 있고 변수에 이미지 주소를 할당해서 img 태그의 src 속성값을 전달해 줄 수도 있고, 이벤트 핸들러를 좀 더 편리하게 등록할 수도 있습니다.
-&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
-&lt;p&gt;const product = &apos;MacBook&apos;;
-const model = &apos;Air&apos;;
-const imageUrl = &apos;&lt;a href=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/MacBook_with_Retina_Display.png/500px-MacBook_with_Retina_Display.png&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/MacBook_with_Retina_Display.png/500px-MacBook_with_Retina_Display.png&lt;/a&gt;&apos;&lt;/p&gt;
-&lt;p&gt;function handleClick(e) {
-alert(&apos;곧 도착합니다!&apos;);
-}&lt;/p&gt;
-&lt;p&gt;ReactDOM.render(
-&amp;#x3C;&gt;&lt;/p&gt;
-&lt;h1&gt;{product + &apos; &apos; + model} 주문하기&lt;/h1&gt;
-&lt;img src={imageUrl} alt=&quot;제품 사진&quot; /&gt;
-&lt;button onClick={handleClick}&gt;확인&lt;/button&gt;
-&lt;/&gt;,
-document.getElementById(&apos;root&apos;)
-);
-단, JSX 문법에서 중괄호는 자바스크립트 표현식을 다룰 때 활용하기 때문에, 중괄호 안에서 for, if문 등의 문장은 다룰 수 없다는 점은 꼭 기억해 주세요.
-그런데도 만약 JSX 문법을 활용할 때 조건문이 꼭 필요하다면 조건 연산자를, 반복문이 꼭 필요하다면 배열의 반복 메소드를 활용하자.</content:encoded></item></channel></rss>
+컴포넌트 이름의 첫 글자가 소문자라면 오류가 발생하니깐 꼭 주의!&lt;/p&gt;</content:encoded></item></channel></rss>
