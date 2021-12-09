@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev.seungwon Jang | Feed]]></title><description><![CDATA[seungwon Jang's Development Blog]]></description><link>https://nicorobinv.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 09 Dec 2021 06:35:48 GMT</lastBuildDate><item><title><![CDATA[조건 표현식]]></title><description><![CDATA[SELECT 문에서 WHERE 절에 적절한 조건을 설정하는 것은 SQL을 잘 사용하기 위한 첫 걸음입니다. 이전 영상에서 배우지 않은 또다른 조건 표현식들을 배워볼까요? 같지 않음 (!=, <>)
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev.seungwon Jang | Feed]]></title><description><![CDATA[seungwon Jang's Development Blog]]></description><link>https://nicorobinv.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 09 Dec 2021 07:05:36 GMT</lastBuildDate><item><title><![CDATA[조건 표현식]]></title><description><![CDATA[SELECT 문에서 WHERE 절에 적절한 조건을 설정하는 것은 SQL을 잘 사용하기 위한 첫 걸음입니다. 이전 영상에서 배우지 않은 또다른 조건 표현식들을 배워볼까요? 같지 않음 (!=, <>)
 이전 영상에서는 '같음'을 나타내는 등호(=)를 배웠…]]></description><link>https://nicorobinv.github.io/DATABASE-study_2/</link><guid isPermaLink="false">https://nicorobinv.github.io/DATABASE-study_2/</guid><pubDate>Thu, 09 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;SELECT 문에서 WHERE 절에 적절한 조건을 설정하는 것은 SQL을 잘 사용하기 위한 첫 걸음입니다. 이전 영상에서 배우지 않은 또다른 조건 표현식들을 배워볼까요?&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;같지 않음 (!=, &amp;#x3C;&gt;)
@@ -21,7 +21,69 @@
 &lt;p&gt;잠깐 member 테이블에서 이메일 주소가 c로 시작하고, 그 뒤에 여섯 글자가 있는 row들을 조회해볼까요?&lt;/p&gt;
 &lt;p&gt;SELECT * FROM copang&lt;em&gt;main.member WHERE email LIKE &quot;c**\&lt;/em&gt;**@%&quot;;&lt;/p&gt;
 &lt;p&gt;지금 LIKE 뒤의 &apos;c&lt;strong&gt;_&lt;/strong&gt;@%&apos; 부분이 이해되시나요? 지금 언더바가 소문자 c 뒤에 5개가 있는 상태인데요. 이 표현식은 c로 시작하고, 그 뒤에 다섯 글자 그리고 골뱅이 하나, 그 뒤에 임의의 길이를 가진 문자열이 있는 문자열 패턴을 나타냅니다. 그리고 이 패턴에 해당하는 문자열인 codeit@naver.com과 cowboy@codeit.kr을 email 주소로 가진 회원들만 잘 조회됐습니다.&lt;/p&gt;
-&lt;p&gt;자, 앞으로는 더 다양한 방식으로 조건을 걸 수 있겠죠? SQL을 쓸 때는 조건 표현식 하나를 더 알고 모르느냐에 따라서 작업 효율이 천차만별로 달라집니다. 이때까지 배운 표현식들은 모두 암기하고 사용할 수 있도록 하세요.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[SQL 국제 표준과 MySQL]]></title><description><![CDATA[데이터베이스를 다루기 위해서는 (1) DBMS라는 프로그램을 사용해야하고, (2) DBMS는 결국 SQL이라고 하는 언어로 조작해야 한다고 했습니다. 이 SQL이 무엇인지 좀더 자세히 알아보겠습니다. SQL의 역사
+&lt;p&gt;자, 앞으로는 더 다양한 방식으로 조건을 걸 수 있겠죠? SQL을 쓸 때는 조건 표현식 하나를 더 알고 모르느냐에 따라서 작업 효율이 천차만별로 달라집니다. 이때까지 배운 표현식들은 모두 암기하고 사용할 수 있도록 하세요.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[DATE 데이터 타입 관련 함수]]></title><description><![CDATA[SQL을 어느 정도 배우고 나서도 많은 분들이 실무에서 SQL을 자유롭게 사용하지 못하는 경우가 많습니다. 그 주된 이유 중 하나는 바로 SQL에서 제공하는 함수를 자유자재로 사용하지 못하기 때문입니다. 사실 SQL의 핵심 기능들은, 다 배우고 나면…]]></description><link>https://nicorobinv.github.io/DATABASE-study_3/</link><guid isPermaLink="false">https://nicorobinv.github.io/DATABASE-study_3/</guid><pubDate>Thu, 09 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;SQL을 어느 정도 배우고 나서도 많은 분들이 실무에서 SQL을 자유롭게 사용하지 못하는 경우가 많습니다.&lt;/p&gt;
+&lt;p&gt;그 주된 이유 중 하나는 바로 SQL에서 제공하는 함수를 자유자재로 사용하지 못하기 때문입니다.&lt;/p&gt;
+&lt;p&gt;사실 SQL의 핵심 기능들은, 다 배우고 나면 그렇게 어렵지는 않습니다. 하지만 SQL 문을 아무리 잘 쓰더라도 저장된 데이터를 내가 원하는 형태로 변환하기 위해 필요한 함수를 모르면 원하는 작업을 할 수가 없습니다. 그래서 SQL에서 쓸 수 있는 다양한 함수들을 익히는 것도 중요한데요.&lt;/p&gt;
+&lt;p&gt;이번 토픽에서는 SQL을 쓸 때, 여러분이 필수적으로 알아야할 함수들을 차근차근 노트로 정리해나갈 예정입니다.&lt;/p&gt;
+&lt;p&gt;일단 이번 노트에서는 DATE 타입의 값들을 다루는 대표적인 함수들을 다뤄보겠습니다.&lt;/p&gt;
+&lt;p&gt;우리가 테이블을 다루다 보면 날짜를 나타내는 값들, 정확히 말해 DATE 데이터 타입을 갖는 컬럼의 값들을 다뤄야할 일들이 많습니다.&lt;/p&gt;
+&lt;p&gt;이때 사용할 수 있는 함수들을 배워보겠습니다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;연도, 월, 일 추출하기
+DATE 타입의 값에서 연도(year)만, 혹은 월(month)만, 혹은 일(day)만 추출할 수 있습니다. 어떻게 할 수 있는지 하나씩 살펴볼게요.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;(1) 1992년에 태어난 회원들만 조회하기&lt;/p&gt;
+&lt;p&gt;SELECT * FROM copang_main.member WHERE YEAR(birthday) = &quot;1992&quot;;&lt;/p&gt;
+&lt;p&gt;위 그림에서처럼 YEAR 함수를 사용하면 날짜 값에서 연도만 뽑아낼 수 있습니다.&lt;/p&gt;
+&lt;p&gt;(2) 여름(6, 7, 8월)에 가입한 회원들만 조회하기&lt;/p&gt;
+&lt;p&gt;SELECT * FROM copang&lt;em&gt;main.member WHERE MONTH(sign&lt;/em&gt;up_day) IN (6, 7, 8);&lt;/p&gt;
+&lt;p&gt;위 그림처럼 MONTH 함수를 사용하면 날짜값에서 월만 뽑아낼 수 있습니다. 지금 그 뒤에는 이전 노트에서 배운 IN 조건 표현식을 사용해봤습니다. 위 그림을 보니 여름에 가입한 회원들만 잘 조회되네요.&lt;/p&gt;
+&lt;p&gt;(3) 각 달의 후반부(15일~31일)에 가입했던 회원들만 조회하기&lt;/p&gt;
+&lt;p&gt;SELECT * FROM copang&lt;em&gt;main.member WHERE DAYOFMONTH(sign&lt;/em&gt;up_day) BETWEEN 15 AND 31;&lt;/p&gt;
+&lt;p&gt;DAYOFMONTH 함수는 날짜값에서 일만 뽑아낼 수 있습니다. 그 뒤에는 이전에 배운 BETWEEN a AND b 구문을 사용해봤습니다. 각 달의 후반부(15일~31일) 사이에 가입한 회원들만 잘 조회되네요.&lt;/p&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;날짜 간의 차이 구하기
+날짜 간의 차이를 구하는 함수도 있습니다. DATEDIFF라는 함수인데요. 여기서 DATE는 날짜, DIFF는 Difference의 줄임말로 &apos;차이&apos;라는 뜻입니다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;DATEDIFF(날짜 a, 날짜 b)를 사용하면 &apos;날짜 a - 날짜 b&apos;를 해서 그 차이 일수를 알려줍니다. 예를 들어,&lt;/p&gt;
+&lt;p&gt;DATEDIFF(’2018-01-05’, ’2018-01-03’)의 값은 2입니다.&lt;/p&gt;
+&lt;p&gt;member 테이블에서 각 회원이 가입한 일자가 2019년 1월 1일을 기준으로 몇 일 이후인지를 알아보겠습니다. 아래 SQL 문을 자세히 살펴보세요.&lt;/p&gt;
+&lt;p&gt;SELECT email, sign&lt;em&gt;up&lt;/em&gt;day, DATEDIFF(sign&lt;em&gt;up&lt;/em&gt;day, &quot;2019-01-01&quot;) FROM copang_main.member;&lt;/p&gt;
+&lt;p&gt;실행결과에는 총 3개의 컬럼이 보입니다. email, sign&lt;em&gt;up&lt;/em&gt;day, 그리고 sign&lt;em&gt;up&lt;/em&gt;day에서 2019년 1월 1일을 뺀 값이 담긴 컬럼, 이렇게 3개인데요. 꼭 테이블에 원래 있던 컬럼이 아니더라도 조회할 때는 이런 식으로 새로운 컬럼을 붙여서 볼 수도 있습니다.&lt;/p&gt;
+&lt;p&gt;지금 보니까 가장 최근에는 cowboy라는 회원이 가입했고, 가입한지 가장 오래된 회원은 2011년에 가입한 xMan_series라는 회원이라는 것을 알 수 있습니다.&lt;/p&gt;
+&lt;p&gt;SELECT eamil, sign&lt;em&gt;up&lt;/em&gt;day, CURDATE(), DATEDIFF(sign&lt;em&gt;up&lt;/em&gt;day, CURDATE()) FROM copang_main.member;&lt;/p&gt;
+&lt;p&gt;그리고 이것 말고도 오늘 날짜를 기준으로 살펴보는 것도 가능한데요. 오늘 날짜를 구하는 함수는 CURDATE()입니다.&lt;/p&gt;
+&lt;p&gt;이 노트가 작성된 날짜는 2020년 6월 2일입니다. 위 그림을 보니 오늘 날짜와의 차이도 잘 출력되었죠?&lt;/p&gt;
+&lt;p&gt;이번엔 회원들이 몇 살이었을 때 코팡에 가입했는지를 알아볼까요? 가입일(sign&lt;em&gt;up&lt;/em&gt;day)-생일(birthday) 값을, 1년이 365일이니까 365로 나눠주면 각 회원이 몇 살일 때, 코팡에 가입했는지 알 수 있습니다.&lt;/p&gt;
+&lt;p&gt;SELECT eamil, sign&lt;em&gt;up&lt;/em&gt;day, DATEDIFF(sign&lt;em&gt;up&lt;/em&gt;day, birthday) / 365 FROM copang_main.member;&lt;/p&gt;
+&lt;p&gt;결과를 보니까 많은 회원들이 20대, 30대일 때 많이 가입을 했네요.&lt;/p&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;날짜 더하기 빼기
+날짜에서 며칠을 더하고 빼는 것도 가능한데요. 더하는 함수는 DATE&lt;em&gt;ADD(), 빼는 함수는 DATE&lt;/em&gt;SUB()입니다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;예를 들어, 가입일(sign&lt;em&gt;up&lt;/em&gt;day) 기준으로 300일 이후의 날짜를 구하려면 이렇게 쓰면 됩니다.&lt;/p&gt;
+&lt;p&gt;SELECT email, sign&lt;em&gt;up&lt;/em&gt;day, DATE&lt;em&gt;ADD(sign&lt;/em&gt;up&lt;em&gt;day, INTERVAL 300 DAY) FROM copang&lt;/em&gt;main.member;&lt;/p&gt;
+&lt;p&gt;지금 DATE&lt;em&gt;ADD(sign&lt;/em&gt;up&lt;em&gt;day, INTERVAL 300 DAY)라고 적힌 부분은 sign&lt;/em&gt;up_day 컬럼의 값에 300일을 더한 날짜를 나타냅니다.&lt;/p&gt;
+&lt;p&gt;만약 가입일(sign&lt;em&gt;up&lt;/em&gt;day) 기준 250일 이전의 날짜를 구하고 싶으면 이렇게 쓰면 됩니다.&lt;/p&gt;
+&lt;p&gt;SELECT email, sign&lt;em&gt;up&lt;/em&gt;day, DATE&lt;em&gt;SUB(sign&lt;/em&gt;up&lt;em&gt;day, INTERVAL 250 DAY) FROM copang&lt;/em&gt;main.member;&lt;/p&gt;
+&lt;p&gt;특정 날짜에서 몇 일 후, 몇 일 전 날짜를 구해야할 때 이 함수들을 쓰면 유용하겠죠?&lt;/p&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;UNIX Timestamp 값
+지금 member 테이블에서 날짜를 나타내는 컬럼(birthday, sign&lt;em&gt;up&lt;/em&gt;day)은 있지만, 시간을 별도로 나타내는 컬럼은 없습니다. 날짜뿐만 아니라 시간까지 포함하는 컬럼이라면 DATETIME이라는 데이터 타입을 사용해야하는데요. DATETIME 타입의 컬럼에는 보통 &apos;2018-12-31 23:54:59’ 이런 식으로 값들이 저장되어 있습니다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;그런데 문제는 어떤 테이블에는 날짜와 시간이 이렇게 예쁜 형식으로 적혀있는게 아니라, 1553526000 이런 식으로 상당히 큰 숫자값이 적혀있는 경우들이 꽤 많다는 겁니다. 이것 또한 날짜와 시간을 나타내는 값인데요. 이런 형식의 날짜시간 값을 UNIX Timestamp라고 합니다. UNIX Timestamp는 특정 날짜의 특정 시간을, 1970년 1월 1일을 기준으로, 총 몇 초가 지났는지로 나타낸 값입니다.&lt;/p&gt;
+&lt;p&gt;정확히 어떤 건지 보여드리겠습니다. DATE 타입의 값을 Unix Timestamp로 바꿔주는 함수가 있는데요. sign&lt;em&gt;up&lt;/em&gt;day 컬럼의 날짜값을 한번 Unix Timestamp로 변환해보겠습니다.&lt;/p&gt;
+&lt;p&gt;SELECT email, sign&lt;em&gt;up&lt;/em&gt;day, UNIX&lt;em&gt;TIMESTAMP(sign&lt;/em&gt;up&lt;em&gt;day FROM copang&lt;/em&gt;main.member);&lt;/p&gt;
+&lt;p&gt;UNIX_TIMESTAMP라는 함수를 쓰면 되는데요. 지금 빨간 박스 안에 상당히 큰 숫자값들이 보입니다. 이 값들은 모두 각 날짜가 1970년 1월 1일을 기준으로 몇 초가 지난 것인지를 나타냅니다. 실무에서 여러분은 깔끔한 형식의 날짜 또는 시간뿐만 아니라 이런 Unix Timestamp를 보게될 수도 있습니다.&lt;/p&gt;
+&lt;p&gt;만약 여러분이 테이블에서 이런 Unix timestamp를 보게 된다면 이걸 사람이 읽을 수 있는 날짜 형태로 바꿔서 보면 되는데요.&lt;/p&gt;
+&lt;p&gt;그럴 때는 FROM_UNIXTIME 함수를 사용하면 됩니다.&lt;/p&gt;
+&lt;p&gt;SELECT email, sign&lt;em&gt;up&lt;/em&gt;day, FROM&lt;em&gt;UNIXTIME(UNIX&lt;/em&gt;TIMESTAMP(sign&lt;em&gt;up&lt;/em&gt;day)) FROM copang_main.member;&lt;/p&gt;
+&lt;p&gt;Unix timestamp를 다시 집어넣었더니 원래 날짜가 그대로 잘 나왔습니다. 대신 이번엔 시간 정보도 포함해서(00:00:00) 출력되었네요.&lt;/p&gt;
+&lt;p&gt;혹시 날짜와 시간을 나타내는 컬럼이라고 하는데 뭔가 큰 숫자가 들어있다면, Unix timestamp가 아닌지 의심해보세요. 그리고 방금 배운 함수로 DATETIME 형식으로 변환해서 보시면 됩니다.&lt;/p&gt;
+&lt;p&gt;자, 이때까지 DATE 타입의 값들을 다룰 수 있는 유용한 함수들을 알아보았습니다. 이밖에도 &apos;시간을 나타내는 TIME 타입&apos;, 방금 설명했던 &apos;날짜, 시간을 함께 나타내는 DATETIME 타입&apos;, 그리고 이것들과 관련된 또다른 함수들도 많습니다. 혹시 이런 내용들에 관해 더 자세하게 알고 싶은 분들은 아래 MySQL 공식 매뉴얼을 참조하세요.&lt;/p&gt;
+&lt;p&gt;날짜, 시간 관련 데이터 타입 : &lt;a href=&quot;https://dev.mysql.com/doc/refman/8.0/en/date-and-time-types.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://dev.mysql.com/doc/refman/8.0/en/date-and-time-types.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;날짜, 시간 관련 함수 : &lt;a href=&quot;https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;그리고 MySQL이 아닌 다른 DBMS를 쓰는 분들은 이 페이지 내용을 보고 그대로 따라하시면 안 되고, 여러분이 쓰시는 DBMS의 매뉴얼 페이지를 참조해서 원하는 함수를 찾아야합니다. 이번 토픽에서 SQL의 기초 개념과 기본 함수들을 배우고, 여러분이 매 상황마다 필요한 함수들을 잘 검색하는 능력을 기른다면 데이터 분석 능력은 급속도로 좋아질 겁니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[SQL 국제 표준과 MySQL]]></title><description><![CDATA[데이터베이스를 다루기 위해서는 (1) DBMS라는 프로그램을 사용해야하고, (2) DBMS는 결국 SQL이라고 하는 언어로 조작해야 한다고 했습니다. 이 SQL이 무엇인지 좀더 자세히 알아보겠습니다. SQL의 역사
 1970년대 초, IBM이라고 하는…]]></description><link>https://nicorobinv.github.io/DATABASE-study_1/</link><guid isPermaLink="false">https://nicorobinv.github.io/DATABASE-study_1/</guid><pubDate>Wed, 08 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;데이터베이스를 다루기 위해서는&lt;/p&gt;
 &lt;p&gt;(1) DBMS라는 프로그램을 사용해야하고,&lt;/p&gt;
 &lt;p&gt;(2) DBMS는 결국 SQL이라고 하는 언어로 조작해야 한다고 했습니다.&lt;/p&gt;
@@ -1383,94 +1445,4 @@ setGameHistory([...gameHistory, nextNum]); // state가 제대로 변경된다!
 };&lt;/p&gt;
 &lt;p&gt;// ...
 이 참조형 state의 특성을 이해하지 못하면, 간혹 state가 제대로 변경되지 않는 버그가 발생했을 때 원인을 제대로 찾지 못하는 경우가 발생할 수도 있는데요.&lt;/p&gt;
-&lt;p&gt;참조형 state를 활용할 땐 반드시 새로운 참조형 값을 만들어서 state를 변경해야 한다는 점.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[React Props 문법]]></title><description><![CDATA[JSX 문법에서 컴포넌트를 작성할 때 컴포넌트에도 속성을 지정할 수 있는데요. 리액트에서 이렇게 컴포넌트에 지정한 속성들을 Props라고 부릅니다. Props는 Properties의 약자인데요. 컴포넌트에 속성을 지정해주면 각 속성이 하나의 객체로 …]]></description><link>https://nicorobinv.github.io/React-study_3/</link><guid isPermaLink="false">https://nicorobinv.github.io/React-study_3/</guid><pubDate>Sun, 22 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;JSX 문법에서 컴포넌트를 작성할 때 컴포넌트에도 속성을 지정할 수 있는데요. 리액트에서 이렇게 컴포넌트에 지정한 속성들을 Props라고 부릅니다.&lt;/p&gt;
-&lt;p&gt;Props는 Properties의 약자인데요. 컴포넌트에 속성을 지정해주면 각 속성이 하나의 객체로 모여서 컴포넌트를 정의한 함수의 첫 번째 파라미터로 전달됩니다.&lt;/p&gt;
-&lt;p&gt;App.js&lt;/p&gt;
-&lt;p&gt;import Dice from &apos;./Dice&apos;;&lt;/p&gt;
-&lt;p&gt;function App() {
-return (&lt;/p&gt;
-&lt;div&gt;
-&lt;Dice color=&quot;blue&quot; /&gt;
-&lt;/div&gt;
-);
-}
-&lt;p&gt;export default App;
-Dice.js&lt;/p&gt;
-&lt;p&gt;import diceBlue01 from &apos;./assets/dice-blue-1.svg&apos;;&lt;/p&gt;
-&lt;p&gt;function Dice(props) {
-console.log(props)
-return &lt;img src={diceBlue01} alt=&quot;주사위&quot; /&gt;;
-}&lt;/p&gt;
-&lt;p&gt;export default Dice;
-위 코드들 처럼 App 함수에서 사용하는 Dice 컴포넌트에 color라는 속성을 blue로 지정해주고, Dice 함수 내부에서 props라는 파라미터를 하나 만들어 출력해보면 브라우저 콘솔에는 다음과 같은 출력 결과가 나타나게 됩니다.&lt;/p&gt;
-&lt;p&gt;{ color: &quot;blue&quot; }
-그래서 컴포넌트를 활용할 때 속성값을 다양하게 전달하고 이 props 값을 활용하면, 똑같은 컴포넌트라도 전달된 속성값에 따라 서로 다른 모습을 그려낼 수도 있게 됩니다.&lt;/p&gt;
-&lt;p&gt;App.js&lt;/p&gt;
-&lt;p&gt;import Dice from &apos;./Dice&apos;;&lt;/p&gt;
-&lt;p&gt;function App() {
-return (&lt;/p&gt;
-&lt;div&gt;
-&lt;Dice color=&quot;red&quot; num={2} /&gt;
-&lt;/div&gt;
-);
-}
-&lt;p&gt;export default App;
-Dice.js&lt;/p&gt;
-&lt;p&gt;import diceBlue01 from &apos;./assets/dice-blue-1.svg&apos;;
-import diceBlue02 from &apos;./assets/dice-blue-2.svg&apos;;
-// ...
-import diceRed01 from &apos;./assets/dice-red-1.svg&apos;;
-import diceRed02 from &apos;./assets/dice-red-2.svg&apos;;
-// ...&lt;/p&gt;
-&lt;p&gt;const DICE_IMAGES = {
-blue: [diceBlue01, diceBlue02],
-red: [diceRed01, diceRed02],
-};&lt;/p&gt;
-&lt;p&gt;function Dice(props) {
-const src = DICE_IMAGES[props.color][props.num - 1];
-const alt = &lt;code class=&quot;language-text&quot;&gt;${props.color} ${props.num}&lt;/code&gt;;
-return &lt;img src={src} alt={alt} /&gt;;
-}&lt;/p&gt;
-&lt;p&gt;export default Dice;
-참고로, 이렇게 props가 객체 형태를 띠고 있으니 Destructuring 문법을 활용해서 조금 더 간결하게 코드를 작성할 수도 있겠죠?&lt;/p&gt;
-&lt;p&gt;import diceBlue01 from &apos;./assets/dice-blue-1.svg&apos;;
-import diceBlue02 from &apos;./assets/dice-blue-2.svg&apos;;
-// ...
-import diceRed01 from &apos;./assets/dice-red-1.svg&apos;;
-import diceRed02 from &apos;./assets/dice-red-2.svg&apos;;
-// ...&lt;/p&gt;
-&lt;p&gt;const DICE_IMAGES = {
-blue: [diceBlue01, diceBlue02],
-red: [diceRed01, diceRed02],
-};&lt;/p&gt;
-&lt;p&gt;function Dice({ color = &apos;blue&apos;, num = 1 }) {
-const src = DICE_IMAGES[color][num - 1];
-const alt = &lt;code class=&quot;language-text&quot;&gt;${color} ${num}&lt;/code&gt;;
-return &lt;img src={src} alt={alt} /&gt;;
-}&lt;/p&gt;
-&lt;p&gt;export default Dice;
-Children
-props에는 children이라는 조금 특별한 프로퍼티(prop, 프롭)가 있습니다.&lt;/p&gt;
-&lt;p&gt;JSX 문법으로 컴포넌트를 작성할 때 컴포넌트를 단일 태그가 아니라 여는 태그와 닫는 태그의 형태로 작성하면, 그 안에 작성된 코드가 바로 이 children 값에 담기게 됩니다.&lt;/p&gt;
-&lt;p&gt;Button.js&lt;/p&gt;
-&lt;p&gt;function Button({ children }) {
-return &lt;button&gt;{children}&lt;/button&gt;;
-}&lt;/p&gt;
-&lt;p&gt;export default Button;
-App.js&lt;/p&gt;
-&lt;p&gt;import Button from &apos;./Button&apos;;
-import Dice from &apos;./Dice&apos;;&lt;/p&gt;
-&lt;p&gt;function App() {
-return (&lt;/p&gt;
-&lt;div&gt;
-&lt;div&gt;
-&lt;Button&gt;던지기&lt;/Button&gt;
-&lt;Button&gt;처음부터&lt;/Button&gt;
-&lt;/div&gt;
-&lt;Dice color=&quot;red&quot; num={2} /&gt;
-&lt;/div&gt;
-);
-}
-&lt;p&gt;export default App;
-그래서 JSX 문법으로 컴포넌트를 작성할 때 어떤 정보를 전달할 때는 일반적인 props의 속성값을 주로 활용하고, 화면에 보여질 모습을 조금 더 직관적인 코드로 작성하고자 할 때 children 값을 활용할 수가 있습니다.&lt;/p&gt;
-&lt;p&gt;참고로 이 children을 활용하면 단순히 텍스트만 작성하는 걸 넘어서 컴포넌트 안에 컴포넌트를 작성할 수도 있고, 컴포넌트 안에 복잡한 태그들을 더 작성할 수도 있다.&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;참조형 state를 활용할 땐 반드시 새로운 참조형 값을 만들어서 state를 변경해야 한다는 점.&lt;/p&gt;</content:encoded></item></channel></rss>
