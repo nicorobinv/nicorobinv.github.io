@@ -1,4 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev.seungwon Jang | Feed]]></title><description><![CDATA[seungwon Jang's Development Blog]]></description><link>https://nicorobinv.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 08 Dec 2021 12:13:14 GMT</lastBuildDate><item><title><![CDATA[SQL 국제 표준과 MySQL]]></title><description><![CDATA[데이터베이스를 다루기 위해서는 (1) DBMS라는 프로그램을 사용해야하고, (2) DBMS는 결국 SQL이라고 하는 언어로 조작해야 한다고 했습니다. 이 SQL이 무엇인지 좀더 자세히 알아보겠습니다. SQL의 역사
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dev.seungwon Jang | Feed]]></title><description><![CDATA[seungwon Jang's Development Blog]]></description><link>https://nicorobinv.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 09 Dec 2021 06:35:48 GMT</lastBuildDate><item><title><![CDATA[조건 표현식]]></title><description><![CDATA[SELECT 문에서 WHERE 절에 적절한 조건을 설정하는 것은 SQL을 잘 사용하기 위한 첫 걸음입니다. 이전 영상에서 배우지 않은 또다른 조건 표현식들을 배워볼까요? 같지 않음 (!=, <>)
+이전 영상에서는 '같음'을 나타내는 등호(=)를 배웠…]]></description><link>https://nicorobinv.github.io/DATABASE-study_2/</link><guid isPermaLink="false">https://nicorobinv.github.io/DATABASE-study_2/</guid><pubDate>Thu, 09 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;SELECT 문에서 WHERE 절에 적절한 조건을 설정하는 것은 SQL을 잘 사용하기 위한 첫 걸음입니다. 이전 영상에서 배우지 않은 또다른 조건 표현식들을 배워볼까요?&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;같지 않음 (!=, &amp;#x3C;&gt;)
+이전 영상에서는 &apos;같음&apos;을 나타내는 등호(=)를 배웠습니다. 그렇다면 &apos;같지 않음&apos;를 표현하려면 어떻게 해야할까요? != 기호나 &amp;#x3C;&gt; 기호를 사용하면 됩니다. member 테이블의 회원들 중 남자가 &apos;아닌&apos; 회원들만 조회해보겠습니다. 일단 != 을 써볼게요.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;SELECT * FROM copang_main.member WHERE gender != &quot;m&quot;;&lt;/p&gt;
+&lt;p&gt;남성이 아닌, 그러니까 여성 회원들만 잘 조회되었죠? 이번에는 &amp;#x3C;&gt;를 써보겠습니다.&lt;/p&gt;
+&lt;p&gt;SELECT * FROM compang_main.member WHERE gender &amp;#x3C;&gt; &quot;m&quot;;&lt;/p&gt;
+&lt;p&gt;마찬가지로 ‘여성’ 회원들만 잘 조회되었습니다.&lt;/p&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;이 중에 있는~ (IN)
+이전 영상에서 우리는 어떤 범위를 나타내기 위해 사용하는 BETWEEN a AND b(a부터 b까지) 구문을 배웠습니다. 그런데 만약 이렇게 연속된 범위 말고, 여러 값들 중에서 해당하는 값이 있는 row들만 추려야할 때도 있는데요. 예를 들어, 현재 회원 중에서 나이가 딱 20살, 또는 딱 30살인 회원들만 조회하려면 어떻게 해야 할까요? 이렇게 써주면 됩니다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;SELECT * FROM copang_main.member WHERE age IN (20, 30);&lt;/p&gt;
+&lt;p&gt;지금 WHERE age IN (20, 30)은 age 컬럼의 값이 20이거나, 30이어야 한다는 조건을 의미합니다. 결과를 보니 잘 조회되었죠? 이 IN은 상당히 유용하게 사용되는 조건 표현식이니까 잘 기억해두세요.&lt;/p&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;한 글자를 나타내는 _
+이전 영상에서 문자열 패턴 매칭 조건을 배울 때 LIKE 뒤의 ‘%’는 임의의 길이를 가진 문자열(0자도 포함)을 나타낸다고 했습니다. 그런데 %말고 언더바(_) 하나 기호도 있는데요. LIKE 뒤의 언더바 하나는 문자 하나를 나타냅니다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;잠깐 member 테이블에서 이메일 주소가 c로 시작하고, 그 뒤에 여섯 글자가 있는 row들을 조회해볼까요?&lt;/p&gt;
+&lt;p&gt;SELECT * FROM copang&lt;em&gt;main.member WHERE email LIKE &quot;c**\&lt;/em&gt;**@%&quot;;&lt;/p&gt;
+&lt;p&gt;지금 LIKE 뒤의 &apos;c&lt;strong&gt;_&lt;/strong&gt;@%&apos; 부분이 이해되시나요? 지금 언더바가 소문자 c 뒤에 5개가 있는 상태인데요. 이 표현식은 c로 시작하고, 그 뒤에 다섯 글자 그리고 골뱅이 하나, 그 뒤에 임의의 길이를 가진 문자열이 있는 문자열 패턴을 나타냅니다. 그리고 이 패턴에 해당하는 문자열인 codeit@naver.com과 cowboy@codeit.kr을 email 주소로 가진 회원들만 잘 조회됐습니다.&lt;/p&gt;
+&lt;p&gt;자, 앞으로는 더 다양한 방식으로 조건을 걸 수 있겠죠? SQL을 쓸 때는 조건 표현식 하나를 더 알고 모르느냐에 따라서 작업 효율이 천차만별로 달라집니다. 이때까지 배운 표현식들은 모두 암기하고 사용할 수 있도록 하세요.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[SQL 국제 표준과 MySQL]]></title><description><![CDATA[데이터베이스를 다루기 위해서는 (1) DBMS라는 프로그램을 사용해야하고, (2) DBMS는 결국 SQL이라고 하는 언어로 조작해야 한다고 했습니다. 이 SQL이 무엇인지 좀더 자세히 알아보겠습니다. SQL의 역사
 1970년대 초, IBM이라고 하는…]]></description><link>https://nicorobinv.github.io/DATABASE-study_1/</link><guid isPermaLink="false">https://nicorobinv.github.io/DATABASE-study_1/</guid><pubDate>Wed, 08 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;데이터베이스를 다루기 위해서는&lt;/p&gt;
 &lt;p&gt;(1) DBMS라는 프로그램을 사용해야하고,&lt;/p&gt;
 &lt;p&gt;(2) DBMS는 결국 SQL이라고 하는 언어로 조작해야 한다고 했습니다.&lt;/p&gt;
@@ -1450,55 +1473,4 @@ return (&lt;/p&gt;
 }
 &lt;p&gt;export default App;
 그래서 JSX 문법으로 컴포넌트를 작성할 때 어떤 정보를 전달할 때는 일반적인 props의 속성값을 주로 활용하고, 화면에 보여질 모습을 조금 더 직관적인 코드로 작성하고자 할 때 children 값을 활용할 수가 있습니다.&lt;/p&gt;
-&lt;p&gt;참고로 이 children을 활용하면 단순히 텍스트만 작성하는 걸 넘어서 컴포넌트 안에 컴포넌트를 작성할 수도 있고, 컴포넌트 안에 복잡한 태그들을 더 작성할 수도 있다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[React commponent 문법]]></title><description><![CDATA[리액트 엘리먼트
-JSX 문법으로 작성한 요소는 결과적으로 자바스크립트 객체가 됩니다. import ReactDOM from 'react-dom'; const element = 안녕 리액트!;
-console.log(element);
-ReactDOM.r…]]></description><link>https://nicorobinv.github.io/React-study_2/</link><guid isPermaLink="false">https://nicorobinv.github.io/React-study_2/</guid><pubDate>Sat, 21 Aug 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;리액트 엘리먼트
-JSX 문법으로 작성한 요소는 결과적으로 자바스크립트 객체가 됩니다.&lt;/p&gt;
-&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
-&lt;p&gt;const element = &lt;h1&gt;안녕 리액트!&lt;/h1&gt;;
-console.log(element);
-ReactDOM.render(element, document.getElementById(&apos;root&apos;));
-{$$typeof: Symbol(react.element), type: &quot;h1&quot;, key: null, ref: null, props: {…}, …}
-이런 객체를 리액트 엘리먼트라고 부르는데요.&lt;/p&gt;
-&lt;p&gt;이 리액트 엘리먼트를 ReactDOM.render 함수의 아규먼트로 전달하게 되면, 리액트가 객체 형태의 값을 해석해서 HTML 형태로 브라우저에 띄워주는 것이죠.&lt;/p&gt;
-&lt;p&gt;리액트 엘리먼트는 리액트로 화면을 그려내는데 가장 기본적인 요소입니다.&lt;/p&gt;
-&lt;p&gt;리액트 컴포넌트
-리액트 컴포넌트는 리액트 엘리먼트를 조금 더 자유롭게 다루기 위한 하나의 문법입니다.&lt;/p&gt;
-&lt;p&gt;컴포넌트를 만드는 가장 간단한 방법은 자바스크립트의 함수를 활용하는 건데요.
-아래 코드에서 JSX 문법으로 작성된 하나의 요소를 리턴하는 Hello 함수가 바로 하나의 컴포넌트입니다.&lt;/p&gt;
-&lt;p&gt;이렇게 요소를 컴포넌트로 작성하게 되면 다양한 장점들이 있는데,
-자세한 내용은 이후의 개념들을 하나씩 배워나가면서 차차 알아보도록 합시다!&lt;/p&gt;
-&lt;p&gt;import ReactDOM from &apos;react-dom&apos;;&lt;/p&gt;
-&lt;p&gt;function Hello() {
-return &lt;h1&gt;안녕 리액트&lt;/h1&gt;;
-}&lt;/p&gt;
-&lt;p&gt;const element = (
-&amp;#x3C;&gt;
-&lt;Hello /&gt;
-&lt;Hello /&gt;
-&lt;Hello /&gt;
-&amp;#x3C;/&gt;
-);&lt;/p&gt;
-&lt;p&gt;ReactDOM.render(element, document.getElementById(&apos;root&apos;));
-그리고 이렇게 컴포넌트를 작성하면,
-위 코드에서 element 변수 안의 JSX 코드에서 볼 수 있듯 컴포넌트 함수 이름을 통해 하나의 태그처럼 활용할 수가 있습니다.&lt;/p&gt;
-&lt;p&gt;이런 특성을 모듈 문법으로 활용하면 훨씬 더 독립적으로 컴포넌트 특성에 집중해서 코드를 작성할 수가 있습니다.&lt;/p&gt;
-&lt;p&gt;예시: Dice.js&lt;/p&gt;
-&lt;p&gt;import diceBlue01 from &apos;./assets/dice-blue-1.svg&apos;;&lt;/p&gt;
-&lt;p&gt;function Dice() {
-return &lt;img src={diceBlue01} alt=&quot;주사위&quot; /&gt;;
-}&lt;/p&gt;
-&lt;p&gt;export default Dice;
-예시: App.js&lt;/p&gt;
-&lt;p&gt;import Dice from &apos;./Dice&apos;;&lt;/p&gt;
-&lt;p&gt;function App() {
-return (&lt;/p&gt;
-&lt;div&gt;
-&lt;Dice /&gt;
-&lt;/div&gt;
-);
-}
-&lt;p&gt;export default App;
-한 가지 주의해야 할 부분은, 리액트 컴포넌트의 이름은 반드시 첫 글자를 대문자로 작성해야 한다는 것입니다.
-컴포넌트 이름의 첫 글자가 소문자라면 오류가 발생하니깐 꼭 주의!&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;참고로 이 children을 활용하면 단순히 텍스트만 작성하는 걸 넘어서 컴포넌트 안에 컴포넌트를 작성할 수도 있고, 컴포넌트 안에 복잡한 태그들을 더 작성할 수도 있다.&lt;/p&gt;</content:encoded></item></channel></rss>
